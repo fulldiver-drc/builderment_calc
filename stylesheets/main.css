@@ -1,3 +1,90 @@
+:root{
+  --neutral-0:#ffffff;
+  --neutral-1:#f8f9fa;
+  --neutral-2:#f1f3f5;
+  --neutral-3:#e9ecef;
+  --neutral-4:#dee2e6;
+  --neutral-5:#ced4da;
+  --neutral-6:#adb5bd;
+  --neutral-7:#6a7178;
+  --neutral-8:#4f575e;
+  --neutral-9:#272b30;
+  --neutral-10:#101213;
+  --background-color: #f3f6f8;
+  --font-s:14px;
+}
+
+html{
+  color: var(--neutral-9);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
 body{
-  padding-top: 200px;
+  background-color: var(--background-color);
+  direction: ltr;
+  font-size: var(--font-s);
+  line-height: 1.5;
+  margin: 0;
+}
+
+[onclick]{
+  cursor: pointer;
+}
+
+label{
+  color: var(--neutral-8);
+}
+
+input, textarea, select, button{
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  font-family:inherit;
+  font-size:100%;
+  line-height:1.25;
+  margin:0;
+}
+
+[type=checkbox], [type=radio]{
+  border:0;
+  padding:0;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button{
+  height:auto;
+}
+
+[type=search]{
+  -webkit-appearance:textfield;
+     -moz-appearance:textfield;
+          appearance:textfield;
+  outline-offset:-2px;
+}
+
+[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration{
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=time], input[type=time]:empty{
+  display:-webkit-inline-box;
+  display:-ms-inline-flexbox;
+  display:inline-flex;
+}
+
+::-webkit-file-upload-button{
+  -webkit-appearance:button;
+  appearance:button;
+}
+
+select::-ms-expand{
+  display:none;
+}
+
+input::-ms-clear{
+  display:none;
 }
