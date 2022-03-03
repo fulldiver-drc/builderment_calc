@@ -16,3 +16,7 @@
 .menu > a:not(:first-child){
 	margin-left: 10px;
 }
+
+.app-icon-wrapper, .menu{
+	display: inline-block;
+}
