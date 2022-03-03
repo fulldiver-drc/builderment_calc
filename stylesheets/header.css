@@ -1,5 +1,11 @@
 .application-header{
 	padding: 10px 40px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+	background-color: white;
 }
 
 .app-icon{
@@ -15,6 +21,11 @@
 
 .menu > a:not(:first-child){
 	margin-left: 10px;
+}
+
+.menu a{
+	text-decoration: none;
+	color: var(--neutral-9);
 }
 
 .app-icon-wrapper, .menu{
