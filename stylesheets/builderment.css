@@ -19,13 +19,17 @@
 	margin-right: 30px;
 }
 
-.menu > a:not(:first-child){
+.menu > *:not(:first-child){
 	margin-left: 20px;
 }
 
-.menu a{
+.menu *{
 	text-decoration: none;
 	color: var(--neutral-9);
+}
+
+.menu .active-page{
+	font-weight: 550;
 }
 
 .app-icon-wrapper, .menu{
