@@ -19,9 +19,7 @@
 	margin-right: 30px;
 }
 
-.menu > *:not(:first-child){
-	margin-left: 20px;
-}
+
 
 .menu *{
 	text-decoration: none;
@@ -44,4 +42,25 @@
 .app-title{
 	display: block;
 	margin-bottom: 20px;
+}
+
+.columns-wrapper{
+	display: flex;
+}
+
+.columns-wrapper > div:not(:first-child),
+.menu > *:not(:first-child){
+	margin-left: 20px;
+}
+
+.columns-wrapper > div{
+	flex: 1 1 0;
+}
+
+div.small-column{
+	flex: 0 1 20%;
+}
+
+div.medium-column{
+	flex: 0 1 40%;
 }
