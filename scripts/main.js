@@ -9,6 +9,6 @@ document.addEventListener('click', function(e){
     element.setAttribute('expanded','');
 });
 
-document.addEventListener('blur', function(){
+document.addEventListener('focusout', function(){
     document.querySelectorAll('select[expanded]').forEach(node => {node.removeAttribute('expanded');});
 });
