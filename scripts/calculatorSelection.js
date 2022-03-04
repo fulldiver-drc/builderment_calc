@@ -13,6 +13,8 @@ var selectedItems = [];
 window.selectItem = function(select, isMultiplier=false){
   var item = select.closest('[itemselect]').selectedItem;
   if (isMultiplier){
+    if (select.valueAsNumber < 1)
+       select.value = 1;
     item.multiplier = select.valueAsNumber;
   }
   else
@@ -50,7 +52,7 @@ function buildItemRow(){
   var nodeTemplate = document.createElement('div');
   nodeTemplate.setAttribute('itemselect', '');
   nodeTemplate.innerHTML = `<select required onchange='selectItem(this)' class='item-select'>${optionsText}</select>`;
-  nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multipy' onchange='selectItem(this, true)' min=1 />`;
+  nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multipy' onfocusout='selectItem(this, true)' min=1 />`;
   nodeTemplate.innerHTML += `<a onclick='removeItem(this)' class='ico' removeitem>&#xE108</a><a onclick='addItem()' class='ico' additem>&#xE109</a>`;
   return nodeTemplate;
 }
