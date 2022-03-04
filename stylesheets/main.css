@@ -11,7 +11,8 @@
   --neutral-9:#272b30;
   --neutral-10:#101213;
   --background-color: #f3f6f8;
-  --font-s:14px;
+  --primary-color: rgb(83, 247, 80);
+  --font-s: 14px;
 }
 
 html{
@@ -50,6 +51,17 @@ input, textarea, select, button{
   padding: 5px 12px;
   outline: none;
   appearance: none;
+}
+
+button{
+  border: 1px solid var(--primary-color);
+  background: var(--neutral-1);
+  color: var(--primary-color);
+}
+
+button.primary{
+  background: var(--primary-color);
+  color: white;
 }
 
 input:hover, textarea:hover, select:hover, button:hover{
