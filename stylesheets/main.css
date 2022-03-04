@@ -11,7 +11,7 @@
   --neutral-9:#272b30;
   --neutral-10:#101213;
   --background-color: #f3f6f8;
-  --primary-color: rgb(83, 247, 80);
+  --primary-color: rgb(92, 237, 88);
   --font-s: 14px;
 }
 
@@ -53,10 +53,14 @@ input, textarea, select, button{
   appearance: none;
 }
 
+button, a{
+  color: var(--primary-color);
+}
+
 button{
   border: 1px solid var(--primary-color);
   background: var(--neutral-1);
-  color: var(--primary-color);
+  font-weight: 600;
 }
 
 button.primary{
