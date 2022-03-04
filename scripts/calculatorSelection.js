@@ -42,6 +42,7 @@ function buildItemRow(){
   nodeTemplate.setAttribute('itemselect', '');
   nodeTemplate.innerHTML = `<select required onchange='selectItem(this)' class='item-select'>${optionsText}</select>`;
   nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multipy' onchange='selectItem(this, true)' min=1 />`;
+  nodeTemplate.innerHTML += `<a onclick='removeItem()'>&#xE108</a><a onclick='addItem()'>&#xE109</a>`;
   return nodeTemplate;
 }
 
