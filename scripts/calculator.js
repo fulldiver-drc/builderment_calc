@@ -1,4 +1,4 @@
-import {items} from 'itemManagement.js';
+import {items} from '/itemManagement.js';
 
 function compareItems(item1, item2){
   if (item1.Label > item2.Label)
