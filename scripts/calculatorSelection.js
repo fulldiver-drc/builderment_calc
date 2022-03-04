@@ -59,7 +59,7 @@ window.addItem = function(){
 
 window.removeItem = function(button){
   var itemDiv = button.closest('[itemselect]');
-  selectedItems.splice(indexOf(itemDiv.selectedItem), 1);
+  selectedItems.splice(selectedItems.indexOf(itemDiv.selectedItem), 1);
   itemDiv.remove()
 }
 
