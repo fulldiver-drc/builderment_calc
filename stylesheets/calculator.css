@@ -1,0 +1,8 @@
+[itemselect]{
+  padding: 5px 0;
+  border-bottom: 1px solid var(--neutral-5);
+}
+
+[itemselect] > *:not(:first-child){
+  margin-left: 20px;
+}
