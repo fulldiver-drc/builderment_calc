@@ -1,6 +1,6 @@
 document.addEventListener('click', function(e){
   var element = e.target;
-  if (element.matches(':not(select), [disabled]'){
+  if (element.matches(':not(select), [disabled]')){
     document.querySelectorAll('select[expanded]').forEach(node => {node.removeAttribute('expanded');});
     return;
   }
