@@ -1,12 +1,13 @@
 <head>
   <link type='text/css' rel="stylesheet" href="stylesheets/main.css"/>
   <link type='text/css' rel="stylesheet" href="stylesheets/builderment.css"/>
+  <script src="scripts/calculator.js"></script>
 </head>
 <body>
   <div class='application-header'>
     <div class='app-icon-wrapper'>
       <a href=''>
-        <img src='https://github.com/santos-drc/builderment_calc/blob/main/images/Builderment.jpg?raw=true' title='Home' class='app-icon'/></img>
+        <img src='images/Builderment.jpg' title='Home' class='app-icon'/></img>
       </a>
     </div>
     <div class='menu'>
@@ -15,6 +16,13 @@
     </div>
   </div>
   <div class='page-content'>
-    
+    <div class='columns-wrapper'>
+      <div class='medium-column'>
+        <form id='item-selection-main' onload='addItem()'>
+        </form>
+      </div>
+      <div>
+      </div>
+    </div>
   </div>
 </body>
