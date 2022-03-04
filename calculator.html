@@ -3,7 +3,7 @@
   <link type='text/css' rel="stylesheet" href="stylesheets/builderment.css"/>
   <script type = 'module' src="scripts/calculator.js"></script>
 </head>
-<body>
+<body onload='addItem()'>
   <div class='application-header'>
     <div class='app-icon-wrapper'>
       <a href=''>
@@ -18,7 +18,7 @@
   <div class='page-content'>
     <div class='columns-wrapper'>
       <div class='medium-column'>
-        <form id='item-selection-main' onload='addItem()'>
+        <form id='item-selection-main'>
         </form>
       </div>
       <div>
