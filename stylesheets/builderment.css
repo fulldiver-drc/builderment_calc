@@ -31,3 +31,13 @@
 .app-icon-wrapper, .menu{
 	display: inline-block;
 }
+
+.page-content{
+	text-align: center;
+	padding: 30px 50px;
+}
+
+.app-title{
+	display: block;
+	margin-bottom: 20px;
+}
