@@ -10,7 +10,7 @@ function compareItems(item1, item2){
 
 var selectedItems = [];
 
-function selectItem(index, select){
+window.selectItem = function(index, select){
   selectedItems[index].itemId = select.value;
 }
 
@@ -37,8 +37,13 @@ function buildItemRow(index=0){
 
 var itemSelection = document.getElementById('item-selection-main');
 
-function addItem(index=0){
+window.addItem = function(index=0){
   selectedItems.splice(index, 0, {itemId: 0, multiplier: 1});
   itemSelection.insertBefore(buildItemRow(index), itemSelection.children[index]);
+}
+
+window.removeItem = function(index){
+  if (index === null) return;
+  selectedItems.splice(index, 1);
 }
 
