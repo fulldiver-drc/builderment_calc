@@ -11,7 +11,7 @@
   --neutral-9:#272b30;
   --neutral-10:#101213;
   --background-color: #f3f6f8;
-  --primary-color: rgb(113, 223, 110);
+  --primary-color: rgb(100, 200, 100);
   --font-s: 14px;
 }
 
@@ -59,7 +59,7 @@ button, a{
 
 button{
   border: 1px solid var(--primary-color);
-  background: var(--neutral-1);
+  background: var(--neutral-3);
   font-weight: 600;
 }
 
