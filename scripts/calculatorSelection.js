@@ -10,8 +10,12 @@ function compareItems(item1, item2){
 
 var selectedItems = [];
 
-window.selectItem = function(select){
-  select.closest('[itemselect]').selectedItem.itemId = select.value;
+window.selectItem = function(select, isMultiplier=false){
+  var item = select.closest('[itemselect]').selectedItem;
+  if (isMultiplier)
+    item.multiplier = select.value;
+  else
+    item.itemId = select.value;
 }
 
 function buildItemList(){
@@ -35,7 +39,8 @@ const optionsText = buildItemList();
 function buildItemRow(){
   var nodeTemplate = document.createElement('div');
   nodeTemplate.setAttribute('itemselect', '');
-  nodeTemplate.innerHTML = `<select required onchange='selectItem(this)'>${optionsText}</select>`;
+  nodeTemplate.innerHTML = `<select required onchange='selectItem(this)' class='item-select'>${optionsText}</select>`;
+  nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multipy' onchange='selectItem(this, true)'/>`
   return nodeTemplate;
 }
 
