@@ -1,9 +1,10 @@
 document.addEventListener('click', function(e){
   var element = e.target;
-  if (element.tagName != "SELECT"){
+  if (element.tagName != "SELECT" || element.hasAttribute('disabled')){
     document.querySelectorAll('select[expanded]').forEach(node => {node.removeAttribute('expanded');});
+    return;
   }
-  if (element.hasAttribute('expanded'))
+  else if (element.hasAttribute('expanded'))
     element.removeAttribute('expanded');
   else
     element.setAttribute('expanded','');
