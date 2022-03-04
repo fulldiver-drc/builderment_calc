@@ -2,9 +2,9 @@ import {items} from './itemManagement.js';
 
 function compareItems(item1, item2){
   if (item1.Label > item2.Label)
-     return -1;
+     return 1;
   if (item2.Label > item1.Label)
-    return 1;
+    return -1;
   return 0;
 }
 
