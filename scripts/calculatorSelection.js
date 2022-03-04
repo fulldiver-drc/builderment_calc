@@ -42,7 +42,7 @@ function buildItemRow(){
   nodeTemplate.setAttribute('itemselect', '');
   nodeTemplate.innerHTML = `<select required onchange='selectItem(this)' class='item-select'>${optionsText}</select>`;
   nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multipy' onchange='selectItem(this, true)' min=1 />`;
-  nodeTemplate.innerHTML += `<a onclick='removeItem(this)' class='ico'>&#xE108</a><a onclick='addItem()'class='ico'>&#xE109</a>`;
+  nodeTemplate.innerHTML += `<a onclick='removeItem(this)' class='ico' removeitem>&#xE108</a><a onclick='addItem()' class='ico' additem>&#xE109</a>`;
   return nodeTemplate;
 }
 
@@ -51,6 +51,7 @@ var itemSelection = document.getElementById('item-selection-main');
 window.addItem = function(){
   var newNode = buildItemRow();
   newNode.selectedItem = {itemId: 0, multiplier: 1};
+  document.querySelectorAll('[additem]').forEach(node => {node.remove()});
   
   selectedItems.push(newNode.selectedItem);
   itemSelection.appendChild(newNode);
