@@ -7,6 +7,9 @@
     #item-selection-wrapper{
       text-align: left;
     }
+    #calculate-summary{
+      float: right;
+    }
   </style>
 </head>
 <body onload='addItem()'>
@@ -25,9 +28,11 @@
     <div class='columns-wrapper'>
       <div class='medium-column'>
         <div id='item-selection-wrapper'>
-          <h3>Step 1</h3>
-          <h6>Select items</h6>
-          <div><button onclick='logItems()'>Calculate Summary</button></div>
+          <h2>Step 1</h2>
+          <div style='margin-bottom: 20px'>
+            <h6>Select items</h6>
+            <button onclick='logItems()' id='calculate-summary'>Calculate Summary</button>
+          </div>
           <form id='item-selection-main'>
           </form>
         </div>
