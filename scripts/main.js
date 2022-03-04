@@ -1,6 +1,6 @@
 document.addEventListener('click', function(e){
   var element = e.target;
-  if (element.tagName != "SELECT" || element.hasAttribute('disabled')){
+  if (element.matches('select, [disabled]'){
     document.querySelectorAll('select[expanded]').forEach(node => {node.removeAttribute('expanded');});
     return;
   }
