@@ -29,7 +29,7 @@ var optionsText = buildItemList();
 
 function buildItemRow(index=0){
   var nodeTemplate = document.createElement('div');
-  var nodeTemplate.innerHTML = `<select required onchange='selectItem(${index}, this)'>`;
+  nodeTemplate.innerHTML = `<select required onchange='selectItem(${index}, this)'>`;
   nodeTemplate.innerHTML += optionsText;
   nodeTemplate.innerHTML += '</select>';
   return nodeTemplate;
