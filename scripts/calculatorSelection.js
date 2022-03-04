@@ -42,6 +42,7 @@ function buildAddItemButton(){
   nodeTemplate.setAttribute('onclick', 'addItem()');
   nodeTemplate.setAttribute('class', 'ico');
   nodeTemplate.setAttribute('additem', '');
+  nodeTemplate.innerHTML = '&#xE109';
   return nodeTemplate;
 }
 
