@@ -37,6 +37,14 @@ function buildItemList(){
 
 const optionsText = buildItemList();
 
+function buildAddItemButton(){
+  var nodeTemplate = document.createElement('a');
+  nodeTemplate.setAttribute('onclick', 'addItem()');
+  nodeTemplate.setAttribute('class', 'ico');
+  nodeTemplate.setAttribute('additem', '');
+  return nodeTemplate;
+}
+
 function buildItemRow(){
   var nodeTemplate = document.createElement('div');
   nodeTemplate.setAttribute('itemselect', '');
@@ -60,6 +68,9 @@ window.addItem = function(){
 window.removeItem = function(button){
   var itemDiv = button.closest('[itemselect]');
   selectedItems.splice(selectedItems.indexOf(itemDiv.selectedItem), 1);
+  
+  if (!itemDiv.nextElementSibling)
+    itemDiv.previousElementSibling.appendChild(buildAddItemButton());
   itemDiv.remove()
 }
 
