@@ -16,7 +16,7 @@ window.selectItem = function(select, isMultiplier=false){
     item.multiplier = select.valueAsNumber;
   }
   else
-    item.itemId = select.valueAsNumber;
+    item.itemId = parseInt(select.value);
 }
 
 function buildItemList(){
