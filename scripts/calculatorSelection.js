@@ -60,3 +60,7 @@ window.removeItem = function(button){
   itemDiv.remove()
 }
 
+window.logItems = function(){
+  console.log(selectedItems);
+}
+
