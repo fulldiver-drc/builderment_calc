@@ -8,3 +8,7 @@ document.addEventListener('click', function(e){
   else
     element.setAttribute('expanded','');
 });
+
+document.addEventListener('blur', function(){
+    document.querySelectorAll('select[expanded]').forEach(node => {node.removeAttribute('expanded');});
+});
