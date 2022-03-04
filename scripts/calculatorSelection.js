@@ -16,7 +16,7 @@ window.selectItem = function(select, isMultiplier=false){
     item.multiplier = select.valueAsNumber;
   }
   else
-    item.itemId = select.value;
+    item.itemId = select.valueAsNumber;
 }
 
 function buildItemList(){
@@ -27,7 +27,7 @@ function buildItemList(){
     }
   }
   itemsClone.sort(compareItems);
-  var options = `<option value='0'>Select an item</option>`;
+  var options = `<option value=0>Select an item</option>`;
   function addItemToList(item){
     options += `<option value=${item.Id}>${item.Label}</option>`; 
   }
