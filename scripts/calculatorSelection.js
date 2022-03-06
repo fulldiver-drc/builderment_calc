@@ -13,8 +13,8 @@ window.selectItem = function(select, isMultiplier=false){
     item.itemId = parseInt(select.value);
 }
 
-function addItemToList(item){
-  this += `<option value=${item.Id}>${item.Label}</option>`;
+function addItemToList(prevValue, item){
+  return prevValue += `<option value=${item.Id}>${item.Label}</option>`;
 }
 
 function buildItemList(){
@@ -25,7 +25,7 @@ function buildItemList(){
     }
   }
   var options = `<option value=0>Select an item</option>`;
-  items.forEach(addItemToList, options);
+  items.reduce(addItemToList, options);
   return options;
 }
 
