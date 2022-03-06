@@ -171,6 +171,11 @@ input::-ms-clear{
   align-items: center;
 }
 
+.flex-align-baseline{
+  display: flex;
+  align-items: baseline;
+}
+
 .ico{
   font-weight: 1000;
   font-size: 150%;
