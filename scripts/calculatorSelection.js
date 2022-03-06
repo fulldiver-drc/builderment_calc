@@ -13,10 +13,6 @@ window.selectItem = function(select, isMultiplier=false){
     item.itemId = parseInt(select.value);
 }
 
-function addItemToList(prevValue, item){
-  return prevValue += `<option value=${item.Id}>${item.Label}</option>`;
-}
-
 function buildItemList(){
   var items = getItemList('', sortSettings.label);
   if (items.length === 0){
@@ -24,7 +20,7 @@ function buildItemList(){
       items.push({Id: i, Label: 'Test item ' + i});
     }
   }
-  return items.reduce(addItemToList, '<option value=0>Select an item</option>');
+  return items.reduce((prevValue, item) => {return prevValue += `<option value=${item.Id}>${item.Label}</option>`}, '<option value=0>Select an item</option>');
 }
 
 const optionsText = buildItemList();
