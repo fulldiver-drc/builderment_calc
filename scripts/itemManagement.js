@@ -72,7 +72,7 @@ function sortItemsByBuilding(item1, item2){
 function getItemList(searchKey, sortSetting = 0){
   var list = [...items];
   if (searchKey !== null && searchKey !== ''){
-    var regSearchKey - new RegExp(searchKey);
+    var regSearchKey = new RegExp(searchKey);
     list = items.filter(filterItems, regSearchKey);
   }
   
