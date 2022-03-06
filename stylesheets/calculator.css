@@ -10,3 +10,18 @@
 [itemselect]:first-child:last-child > [removeitem]{
   visibility: hidden;
 }
+
+#item-selection-wrapper{
+  text-align: left;
+}
+#calculate-summary{
+  float: right;
+}
+
+.item-select{
+  width: 210px;
+}
+
+.item-multiply{
+  width: 75px;
+}
