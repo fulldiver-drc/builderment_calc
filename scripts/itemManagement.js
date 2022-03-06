@@ -36,10 +36,10 @@ function sortItemsById(item1, item2){
   return 0;
 }
 
-function sortItemsById(item1, item2){
-  if (item1.Id < item2.Id)
+function sortItemsByLabel(item1, item2){
+  if (item1.Label < item2.Label)
     return 1;
-  if (item2.Id < item1.Id)
+  if (item2.Label < item1.Label)
     return -1;
   return 0;
 }
@@ -95,4 +95,4 @@ function getItemList(searchKey, sortSetting = 0;){
     
 }
 
-export {items, buildings, ingredients, getItemDetails, generateSummary, sortSettings, getItemList};
+export {getItemDetails, generateSummary, sortSettings, getItemList};
