@@ -24,9 +24,7 @@ function buildItemList(){
       items.push({Id: i, Label: 'Test item ' + i});
     }
   }
-  var options = `<option value=0>Select an item</option>`;
-  items.reduce(addItemToList, options);
-  return options;
+  return items.reduce(addItemToList, '<option value=0>Select an item</option>');
 }
 
 const optionsText = buildItemList();
