@@ -171,25 +171,25 @@ function filterItems(item){
 
 function sortItemsById(item1, item2){
   if (item1.Id < item2.Id)
-    return 1;
-  if (item2.Id < item1.Id)
     return -1;
+  if (item2.Id < item1.Id)
+    return 1;
   return 0;
 }
 
 function sortItemsByLabel(item1, item2){
   if (item1.Label < item2.Label)
-    return 1;
-  if (item2.Label < item1.Label)
     return -1;
+  if (item2.Label < item1.Label)
+    return 1;
   return 0;
 }
 
 function sortItemsByBase(item1, item2){
   if (item1.Base < item2.Base)
-    return 1;
-  if (item2.Base < item1.Base)
     return -1;
+  if (item2.Base < item1.Base)
+    return 1;
   return 0;
 }
 
@@ -204,9 +204,9 @@ function sortItemsByBuilding(item1, item2){
   }
   
   if (buildings1 < buildings2)
-    return 1;
-  if (buildings2 < buildings1)
     return -1;
+  if (buildings2 < buildings1)
+    return 1;
   return 0;
 }
 
