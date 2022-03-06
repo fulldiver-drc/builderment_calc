@@ -20,7 +20,7 @@ function buildItemList(){
       items.push({Id: i, Label: 'Test item ' + i});
     }
   }
-  return items.reduce((prevValue, item) => {return prevValue += `<option value=${item.Id}>${item.Label}</option>`}, '<option value=0>Select an item</option>');
+  return items.reduce((prevValue, item) => {return prevValue += `<option value=${item.Id}>${item.Label}</option>`}, '<option value=0>-Select an item-</option>');
 }
 
 const optionsText = buildItemList();
