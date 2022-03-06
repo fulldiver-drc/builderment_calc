@@ -69,7 +69,7 @@ function sortItemsByBuilding(item1, item2){
   return 0;
 }
 
-function getItemList(searchKey, sortSetting = 0;){
+function getItemList(searchKey, sortSetting = 0){
   var list = [...items];
   if (searchKey !== null && searchKey !== ''){
     var regSearchKey - new RegExp(searchKey);
