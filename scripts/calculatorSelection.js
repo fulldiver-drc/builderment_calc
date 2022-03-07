@@ -48,8 +48,12 @@ window.recipeCalculator = {
     else
       item.itemId = parseInt(select.value);
 
-    var itemDetail = getItemDetails(item.itemId);
-    preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
+    if (item.itemId === 0)
+      preview.innerHTML = `Rate: N/A<br/>Building: N/A`
+    else{
+      preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
+      var itemDetail = getItemDetails(item.itemId);
+    }
   },
   addItem: function(){
     var newNode = buildItemRow();
