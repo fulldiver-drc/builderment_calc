@@ -15,8 +15,7 @@ window.selectItem = function(select, isMultiplier=false){
     var preview = itemDiv.querySelector('.item-quick-rate');
     preview.setAttribute('itemid', item.itemId);
     var itemDetail = getItemDetails(item.itemId);
-    console.log('Item:', itemDetail, '\nMultiplier:', item.multiplier);
-    preview.innerHTML = `Rate: ${Math.round(getItemDetails(item.itemId).Base * item.multiplier)} / min`
+    preview.innerHTML = `Rate: ${Math.round(itemDetail.BaseRate * item.multiplier)} / min`
   }
 }
 
