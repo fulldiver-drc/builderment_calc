@@ -1,4 +1,4 @@
-import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.js';
+import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.mjs';
 
 function buildItemList(){
   var items = getItemList('', sortSettings.label);
