@@ -3,7 +3,7 @@
   border-bottom: 1px solid var(--neutral-5);
 }
 
-[itemselect] > *:not(:first-child){
+[itemselect] > *:not(:first-child):not(div){
   margin-left: 20px;
 }
 
