@@ -34,8 +34,8 @@ var Tabs = function(){
     var contents = tabContainer.querySelector('.tab-contents').querySelectorAll('.tab-content');
     headers.forEach(x => {x.removeAttribute('active')});
     contents.forEach(x => {x.removeAttribute('active')});
-    [...headers].find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
-    [...contents].find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
+    [...headers].find(x => {return x.getAttribute('tab-index') == index}).setAttribute('active', '');
+    [...contents].find(x => {return x.getAttribute('tab-index') == index}).setAttribute('active', '');
   }
   
   document.addEventListener('DOMContentLoaded', init);
