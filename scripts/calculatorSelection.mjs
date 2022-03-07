@@ -1,60 +1,70 @@
 import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.mjs';
 
-function buildItemList(){
-  var items = getItemList('', sortSettings.label);
-  if (items.length === 0){
-    for (var i=0; i<5; i++){
-      items.push({Id: i, Label: 'Test item ' + i});
-    }
-  }
-  return items.reduce((prevValue, item) => {return prevValue += `<option value=${item.Id}>${item.Label}</option>`}, '<option value=0>-Select an item-</option>');
-}
-const optionsText = buildItemList();
-
-function buildAddItemButton(){
-  var nodeTemplate = document.createElement('a');
-  nodeTemplate.setAttribute('onclick', 'addItem()');
-  nodeTemplate.setAttribute('class', 'ico');
-  nodeTemplate.setAttribute('additem', '');
-  nodeTemplate.innerHTML = '&#xE109';
-  return nodeTemplate;
-}
-
-function buildItemRow(){
-  var nodeTemplate = document.createElement('div');
-  nodeTemplate.setAttribute('itemselect', '');
-  nodeTemplate.innerHTML = `<select required onchange='recipeCalculator.selectItem(this)' class='item-select'>${optionsText}</select>`;
-  nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multiply' onfocusout='recipeCalculator.selectItem(this, true)' min=1 />`;
-  nodeTemplate.innerHTML += `<a onclick='recipeCalculator.removeItem(this)' class='ico' removeitem>&#xE108</a><a onclick='recipeCalculator.addItem()' class='ico' additem>&#xE109</a>`;
-  nodeTemplate.innerHTML += `<div itemid=0 mult=0 class='item-quick-rate'>Rate: N/A<br/>Building: N/A</div>`; 
-  return nodeTemplate;
-}
-
-var itemSelection = document.getElementById('item-selection-main');
-var selectedItems = [];
-
 var RecipeCalculator = function(){
   this.summary = {};
   var calc = this;
   
+  function buildItemList(){
+    var items = getItemList('', sortSettings.label);
+    if (items.length === 0){
+      for (var i=0; i<5; i++){
+        items.push({Id: i, Label: 'Test item ' + i});
+      }
+    }
+    return items.reduce((prevValue, item) => {return prevValue += `<option value=${item.Id}>${item.Label}</option>`}, '<option value=0>-Select an item-</option>');
+  }
+  const optionsText = buildItemList();
+
+  function buildAddItemButton(){
+    var nodeTemplate = document.createElement('a');
+    nodeTemplate.setAttribute('onclick', 'addItem()');
+    nodeTemplate.setAttribute('class', 'ico');
+    nodeTemplate.setAttribute('additem', '');
+    nodeTemplate.innerHTML = '&#xE109';
+    return nodeTemplate;
+  }
+
+  function buildItemRow(){
+    var nodeTemplate = document.createElement('div');
+    nodeTemplate.setAttribute('itemselect', '');
+    nodeTemplate.innerHTML = `<select required onchange='recipeCalculator.selectItem(this)' class='item-select'>${optionsText}</select>`;
+    nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multiply' onfocusout='recipeCalculator.selectItem(this, true)' min=1 />`;
+    nodeTemplate.innerHTML += `<a onclick='recipeCalculator.removeItem(this)' class='ico' removeitem>&#xE108</a><a onclick='recipeCalculator.addItem()' class='ico' additem>&#xE109</a>`;
+    nodeTemplate.innerHTML += `<div itemid=0 mult=0 class='item-quick-rate'>Rate: N/A<br/>Building: N/A</div>`; 
+    return nodeTemplate;
+  }
+  
+  function checkItemValid(item){
+    return item.itemId !== 0 && item.multiplier >= 1;
+  }
+
+  var itemSelection = document.getElementById('item-selection-main');
+  var selectedItems = [];
+
   this.selectItem = function(select, isMultiplier=false){
     var itemDiv = select.closest('[itemselect]');
     var item = itemDiv.selectedItem;
     var preview = itemDiv.querySelector('.item-quick-rate');
+    var calculateSummary = document.getElementById('calculate-summary');
 
     if (isMultiplier){
       if (select.valueAsNumber < 1)
          select.value = 1;
+      select.value = Math.ceil(select.valueAsNumber/0.5) * 0.5;
       item.multiplier = select.valueAsNumber;
     }
     else
       item.itemId = parseInt(select.value);
 
-    if (item.itemId === 0)
+    if (item.itemId === 0){
       preview.innerHTML = `Rate: N/A<br/>Building: N/A`
+      calculateSummary.setAttribute('disabled', '');
+    }
     else{
       var itemDetail = getItemDetails(item.itemId);
       preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
+      if (!selectedItems.every(checkItemValid))
+        calculateSummary.removeAttribute('disabled');
     }
   };
   
@@ -76,7 +86,9 @@ var RecipeCalculator = function(){
     itemDiv.remove()
   };
   
-  this.logItems = function(){
+  this.calculateSummary = function(){
+    if (!selectedItems.every(checkItemValid))
+      return;
     calc.summary = generateSummary(selectedItems);
     console.log(calc.summary);
   };
