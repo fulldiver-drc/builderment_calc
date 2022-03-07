@@ -37,12 +37,21 @@
 }
 
 .tab-header{
-  padding: 8px;
+  padding: 10px 0;
+  margin: 0 10px;
+}
+
+.tab-header:first-child{
+  margin-left: 20px;
+}
+
+.tab-header:last-child{
+  margin-right: 20px;
 }
 
 .tab-header[active]{
   font-weight: 600;
-  border-bottom: 2px solid var(--neutral-6);
+  border-bottom: 1px solid var(--neutral-6);
 }
 
 .tab-content{
