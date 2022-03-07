@@ -11,7 +11,6 @@ var Tabs = function(){
     var allHeaders = document.querySelectorAll('.tab-headers');
     allHeaders.forEach(headerDiv => {
       var contentDiv = headerDiv.nextElementSibling;
-      console.log(headerDiv.childNodes);
       var headers = [...(headerDiv.children)].filter(header => {
         return header.classList.contains('tab-header');
       });
