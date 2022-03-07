@@ -27,10 +27,5 @@
 }
 
 .item-quick-rate{
-  display:none;
-}
-
-.item-quick-rate[itemid]:not([itemid='0']){
-  display: block;
   padding: 10px;
 }
