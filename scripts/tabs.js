@@ -12,10 +12,10 @@ var Tabs = function(){
     allHeaders.forEach(headerDiv => {
       var contentDiv = headerDiv.nextElementSibling;
       console.log(headerDiv.childNodes);
-      var headers = [...(headerDiv.childNodes)].filter(header => {
+      var headers = headerDiv.children.filter(header => {
         return header.classList.contains('tab-header');
       });
-      var contents = [...(contentDiv.childNodes)].filter(content => {
+      var contents = contentDiv.children.filter(content => {
         return content.classList.contains('tab-content');
       });
       var length = Math.min(headers.length, contents.length);
@@ -35,8 +35,8 @@ var Tabs = function(){
     var contents = tabContainer.querySelector('.tab-contents').querySelectorAll('.tab-content');
     headers.forEach(x => {x.removeAttribute('active')});
     contents.forEach(x => {x.removeAttribute('active')});
-    headers.find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
-    contents.find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
+    [...headers].find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
+    [...contents].find(x => {x.getAttribute('tab-index') == index}).setAttribute('active', '');
   }
   
   document.addEventListener('DOMContentLoaded', init);
