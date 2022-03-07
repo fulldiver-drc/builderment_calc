@@ -149,7 +149,8 @@ var sortSettings = {
   building: 3
 }
 
-function getItemDetails(itemName){
+function getItemDetails(itemId){
+  return items.find(x => {return x.Id == itemId});
 }
 
 function generateInefficientSummary(){
