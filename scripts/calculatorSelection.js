@@ -1,6 +1,5 @@
 import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.js';
 
-
 function buildItemList(){
   var items = getItemList('', sortSettings.label);
   if (items.length === 0){
@@ -35,6 +34,7 @@ var itemSelection = document.getElementById('item-selection-main');
 var selectedItems = [];
 
 window.recipeCalculator = {
+  summary: {},
   selectItem: function(select, isMultiplier=false){
     var itemDiv = select.closest('[itemselect]');
     var item = itemDiv.selectedItem;
@@ -68,7 +68,8 @@ window.recipeCalculator = {
     itemDiv.remove()
   },
   logItems: function(){
-    console.log(generateSummary(selectedItems));
+    summary = generateSummary(selectedItems));
+    console.log(summary);
   }
 }
 
