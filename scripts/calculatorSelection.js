@@ -1,4 +1,4 @@
-import {getItemList, getItemDetails, sortSettings} from './itemManagement.js';
+import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.js';
 
 var selectedItems = [];
 
@@ -71,6 +71,6 @@ window.removeItem = function(button){
 }
 
 window.logItems = function(){
-  console.log(selectedItems);
+  console.log(generateSummary(selectedItems));
 }
 
