@@ -186,6 +186,7 @@ function generateInefficientSummary(recipeList){
   recipeList.forEach(recipe => {
     recipe.Id = recipe.itemId;
     recipe.Multiplier = recipe.multiplier;
+    recipe.Rate = recipe.Base;
     delete recipe.itemId;
     delete recipe.multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
