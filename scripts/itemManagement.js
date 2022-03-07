@@ -190,6 +190,7 @@ function generateInefficientSummary(recipeList){
     delete recipe.multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
   });
+  return recipeList;
 }
 
 function generateEfficientSummary(inefficientRate){
