@@ -20,19 +20,34 @@
   <div class='page-content'>
     <div class='columns-wrapper'>
       <div style='flex: 0 0 410px'>
-        <div id='item-selection-wrapper'>
+        <div class='align-left'>
           <div class='flex-align-center' style='margin-bottom: 20px'>
-              <span style='font-size: 150%; font-weight: 700;'>Step 1 -</span>
-              <span style='margin-left: 5px'>Select items</span>
+            <span style='font-size: 150%; font-weight: 700;'>Step 1 -</span>
+            <span style='margin-left: 5px'>Select items</span>
             <div style='flex-grow: 1'>
               <button onclick='recipeCalculator.logItems()' id='calculate-summary' class='primary'>Calculate Summary</button>
             </div>
           </div>
-          <form id='item-selection-main'>
-          </form>
+          <div id='item-selection-main'>
+          </div>
         </div>
       </div>
-      <div>
+      <div class='align-left'>
+        <div class='flex-align-center' style='margin-bottom: 20px'>
+          <span style='font-size: 150%; font-weight: 700;'>Step 2 -</span>
+          <span style='margin-left: 5px'>Select items</span>
+          <div style='flex-grow: 1'></div>
+        </div>
+        <div class='tabs'>
+          <div class='tab-headers'>
+            <div class='tab-header' tab-index=0>Production Tree (Inefficient Resource Use)</div>
+            <div class='tab-header' tab-index=1>Production Summary (Efficient Resource Use)</div>
+          </div>
+          <div class='tab-contents'>
+            <div class='tab-content' tab-index=0></div>
+            <div class='tab-content' tab-index=1></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
