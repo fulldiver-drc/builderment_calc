@@ -171,6 +171,8 @@ function getSubRecipes(recipe, tier = 0){
 }
 
 function multiplyInefficientSummary(inefficientList){
+  if (!inefficientList)
+    return;
   inefficientList.forEach(x => {
     x.Rate *= x.Multiplier;
     x.SubRecipes.forEach(y => {
