@@ -48,7 +48,7 @@ const items =
   {Id: 39, Label: "Metal Frame", Base: 5, Building: "Machine Shop", Complexity: 7},
   {Id: 47, Label: "Energy Cube", Base: 2, Building: "Machine Shop", Complexity: 34}];
 
-var ingredients =
+const ingredients =
   [{Id: 10, TargetItem: 21, SourceItem: 11, Rate: 60},
   {Id: 11, TargetItem: 17, SourceItem: 15, Rate: 30},
   {Id: 12, TargetItem: 19, SourceItem: 2, Rate: 6},
@@ -136,7 +136,7 @@ var ingredients =
   {Id: 9, TargetItem: 37, SourceItem: 8, Rate: 40},
   {Id: 90, TargetItem: 48, SourceItem: 5, Rate: (200/3)}];
 
-var sortSettings = {
+const sortSettings = {
   id: 0,
   label: 1,
   base: 2,
@@ -186,7 +186,7 @@ function generateInefficientSummary(recipeList){
   recipeList.forEach(recipe => {
     recipe.Id = recipe.itemId;
     recipe.Multiplier = recipe.multiplier;
-    recipe.Rate = recipe.Base;
+    recipe.Rate = getItemDetails(recipe.Id).Base;
     delete recipe.itemId;
     delete recipe.multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
