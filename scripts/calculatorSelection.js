@@ -5,16 +5,15 @@ var selectedItems = [];
 window.selectItem = function(select, isMultiplier=false){
   var itemDiv = select.closest('[itemselect]');
   var item = itemDiv.selectedItem;
+  var preview = itemDiv.querySelector('.item-quick-rate');
+  
   if (isMultiplier){
     if (select.valueAsNumber < 1)
        select.value = 1;
     item.multiplier = select.valueAsNumber;
   }
-  else{
+  else
     item.itemId = parseInt(select.value);
-    var preview = itemDiv.querySelector('.item-quick-rate');
-    preview.setAttribute('itemid', item.itemId);
-  }
   
   var itemDetail = getItemDetails(item.itemId);
   preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
