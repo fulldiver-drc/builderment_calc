@@ -12,10 +12,10 @@ var Tabs = function(){
     allHeaders.forEach(headerDiv => {
       var contentDiv = headerDiv.nextElementSibling;
       console.log(headerDiv.childNodes);
-      var headers = headerDiv.children.filter(header => {
+      var headers = [...(headerDiv.children)].filter(header => {
         return header.classList.contains('tab-header');
       });
-      var contents = contentDiv.children.filter(content => {
+      var contents = [...(contentDiv.children).filter(content => {
         return content.classList.contains('tab-content');
       });
       var length = Math.min(headers.length, contents.length);
