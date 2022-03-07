@@ -59,7 +59,7 @@ button, a{
 }
 
 button:hover, a:hover{
-  color: var(--primary-darl);
+  color: var(--primary-dark);
 }
 
 button{
