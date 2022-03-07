@@ -143,6 +143,14 @@ const sortSettings = {
   building: 3
 }
 
+const level = {
+  one: 1,
+  two: 1.5,
+  three: 2,
+  four: 3,
+  five: 4
+}
+
 function getItemDetails(itemId){
   return items.find(x => {return x.Id == itemId});
 }
@@ -276,4 +284,4 @@ function getItemList(searchKey, sortSetting = 0){
     
 }
 
-export {getItemDetails, generateSummary, sortSettings, getItemList};
+export {getItemDetails, generateSummary, sortSettings, getItemList, level};
