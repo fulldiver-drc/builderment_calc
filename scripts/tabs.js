@@ -11,10 +11,10 @@ var Tabs = function(){
     var allHeaders = document.querySelectorAll('.tab-headers');
     allHeaders.forEach(headerDiv => {
       var contentDiv = headerDiv.nextElementSibling;
-      var headers = headerDiv.childNodes.filter(header => {
+      var headers = [...(headerDiv.childNodes)].filter(header => {
         return header.classList.contains('tab-header');
       });
-      var contents = contentDiv.childNodes.filter(content => {
+      var contents = [...(contentDiv.childNodes)].filter(content => {
         return content.classList.contains('tab-content');
       });
       var length = Math.min(headers.length, contents.length);
@@ -27,7 +27,7 @@ var Tabs = function(){
   
   this.setTab = function(tab){
     var tabContainer = tab.closest('.tabs');
-    if (this.hasAttribute('active'))
+    if (tab.hasAttribute('active'))
       return;
     var index = tab.getAttribute('tab-index');
     var headers = tabContainer.querySelector('.tab-headers').querySelectorAll('.tab-header');
