@@ -1,60 +1,53 @@
 const items =
-  [{Id: 22, Label: "Wood", Order: 1, BuildingId: 5, BaseRate: 7.5},
-  {Id: 34, Label: "Iron Ore", Order: 2, BuildingId: 5, BaseRate: 7.5},
-  {Id: 12, Label: "Copper Ore", Order: 3, BuildingId: 5, BaseRate: 7.5},
-  {Id: 8, Label: "Stone", Order: 4, BuildingId: 5, BaseRate: 7.5},
-  {Id: 40, Label: "Coal", Order: 5, BuildingId: 5, BaseRate: 7.5},
-  {Id: 25, Label: "Wolframite", Order: 6, BuildingId: 5, BaseRate: 7.5},
-  {Id: 3, Label: "Wood Plank", Order: 7, BuildingId: 6, BaseRate: 15},
-  {Id: 7, Label: "Wood Frame", Order: 8, BuildingId: 6, BaseRate: 7.5},
-  {Id: 13, Label: "Copper Wire", Order: 9, BuildingId: 6, BaseRate: 30},
-  {Id: 26, Label: "Heat Sink", Order: 10, BuildingId: 6, BaseRate: 10},
-  {Id: 43, Label: "Iron Gear", Order: 11, BuildingId: 6, BaseRate: 15},
-  {Id: 42, Label: "Iron Plating", Order: 12, BuildingId: 6, BaseRate: 20},
-  {Id: 18, Label: "Steel Rod", Order: 13, BuildingId: 6, BaseRate: 15},
-  {Id: 37, Label: "Sand", Order: 14, BuildingId: 6, BaseRate: 40},
-  {Id: 21, Label: "Condenser Lens", Order: 15, BuildingId: 6, BaseRate: 20},
-  {Id: 17, Label: "Carbon Fiber", Order: 16, BuildingId: 6, BaseRate: 7.5},
-  {Id: 19, Label: "Coupler", Order: 17, BuildingId: 6, BaseRate: 6},
-  {Id: 5, Label: "Particle Glue", Order: 18, BuildingId: 6, BaseRate: 20},
-  {Id: 31, Label: "Iron Ingot", Order: 19, BuildingId: 4, BaseRate: 30},
-  {Id: 16, Label: "Copper Ingot", Order: 20, BuildingId: 4, BaseRate: 30},
-  {Id: 44, Label: "Silicon", Order: 21, BuildingId: 4, BaseRate: 20},
-  {Id: 11, Label: "Glass", Order: 22, BuildingId: 4, BaseRate: 10},
-  {Id: 35, Label: "Tungsten Ore", Order: 23, BuildingId: 4, BaseRate: 24},
-  {Id: 23, Label: "Electromagnet", Order: 24, BuildingId: 7, BaseRate: 7.5},
-  {Id: 1, Label: "Logic Circuit", Order: 25, BuildingId: 7, BaseRate: 10},
-  {Id: 39, Label: "Metal Frame", Order: 26, BuildingId: 7, BaseRate: 5},
-  {Id: 30, Label: "Battery", Order: 27, BuildingId: 7, BaseRate: 2.5},
-  {Id: 27, Label: "Rotor", Order: 28, BuildingId: 7, BaseRate: 10},
-  {Id: 6, Label: "Nano Wire", Order: 29, BuildingId: 7, BaseRate: 5},
-  {Id: 20, Label: "Gyroscope", Order: 30, BuildingId: 7, BaseRate: 5},
-  {Id: 10, Label: "Quantum Entangler", Order: 31, BuildingId: 7, BaseRate: 1},
-  {Id: 33, Label: "Computer", Order: 32, BuildingId: 2, BaseRate: 7.5},
-  {Id: 36, Label: "Electric Motor", Order: 33, BuildingId: 2, BaseRate: 3},
-  {Id: 38, Label: "Stabilizer", Order: 34, BuildingId: 2, BaseRate: 2.5},
-  {Id: 14, Label: "Industrial Frame", Order: 35, BuildingId: 2, BaseRate: 3},
-  {Id: 15, Label: "Graphite", Order: 36, BuildingId: 3, BaseRate: 15},
-  {Id: 41, Label: "Steel", Order: 37, BuildingId: 3, BaseRate: 7.5},
-  {Id: 24, Label: "Concrete", Order: 38, BuildingId: 3, BaseRate: 7.5},
-  {Id: 2, Label: "Tungsten Carbide", Order: 39, BuildingId: 3, BaseRate: 12},
-  {Id: 9, Label: "Electron Microscope", Order: 40, BuildingId: 1, BaseRate: 2.5},
-  {Id: 29, Label: "Turbocharger", Order: 41, BuildingId: 1, BaseRate: 4},
-  {Id: 28, Label: "Supercomputer", Order: 42, BuildingId: 1, BaseRate: 2},
-  {Id: 4, Label: "Atomic Locator", Order: 43, BuildingId: 1, BaseRate: 2},
-  {Id: 32, Label: "Magnetic Field Generator", Order: 44, BuildingId: 1, BaseRate: 1.5},
-  {Id: 46, Label: "Tank", Order: 45, BuildingId: 2, BaseRate: 6},
-  {Id: 45, Label: "Matter Compressor", Order: 46, BuildingId: 1, BaseRate: 2},
-  {Id: 47, Label: "Energy Cube", Order: 47, BuildingId: 7, BaseRate: 2},
-  {Id: 48, Label: "Matter Duplicator", Order: 48, BuildingId: 1, BaseRate: (2/3)}];
-var buildings =
-  [{Id: 6, Label: "Workshop", Order: 1, IngredientCount: 1},
-  {Id: 4, Label: "Furnace", Order: 2, IngredientCount: 1},
-  {Id: 7, Label: "Machine Shop", Order: 3, IngredientCount: 2},
-  {Id: 2, Label: "Industrial Factory", Order: 4, IngredientCount: 3},
-  {Id: 3, Label: "Forge", Order: 5, IngredientCount: 2},
-  {Id: 1, Label: "Manufacturer", Order: 6, IngredientCount: 4},
-  {Id: 5, Label: "Extractor", Order: 7, IngredientCount: 0}];
+  [{Id: 4, Label: "Atomic Locator", Base: 2, Building: "Manufacturer", Complexity: 58},
+  {Id: 9, Label: "Electron Microscope", Base: 2.5, Building: "Manufacturer", Complexity: 26},
+  {Id: 28, Label: "Supercomputer", Base: 2, Building: "Manufacturer", Complexity: 55},
+  {Id: 29, Label: "Turbocharger", Base: 4, Building: "Manufacturer", Complexity: 26},
+  {Id: 32, Label: "Magnetic Field Generator", Base: 1.5, Building: "Manufacturer", Complexity: 52},
+  {Id: 45, Label: "Matter Compressor", Base: 2, Building: "Manufacturer", Complexity: 81},
+  {Id: 48, Label: "Matter Duplicator", Base: (2/3), Building: "Manufacturer", Complexity: 42},
+  {Id: 14, Label: "Industrial Frame", Base: 3, Building: "Industrial Factory", Complexity: 23},
+  {Id: 33, Label: "Computer", Base: 7.5, Building: "Industrial Factory", Complexity: 18},
+  {Id: 36, Label: "Electric Motor", Base: 3, Building: "Industrial Factory", Complexity: 24},
+  {Id: 38, Label: "Stabilizer", Base: 2.5, Building: "Industrial Factory", Complexity: 48},
+  {Id: 46, Label: "Tank", Base: 6, Building: "Industrial Factory", Complexity: 19},
+  {Id: 2, Label: "Tungsten Carbide", Base: 12, Building: "Forge", Complexity: 6},
+  {Id: 15, Label: "Graphite", Base: 15, Building: "Forge", Complexity: 3},
+  {Id: 24, Label: "Concrete", Base: 7.5, Building: "Forge", Complexity: 9},
+  {Id: 41, Label: "Steel", Base: 7.5, Building: "Forge", Complexity: 5},
+  {Id: 11, Label: "Glass", Base: 10, Building: "Furnace", Complexity: 3},
+  {Id: 16, Label: "Copper Ingot", Base: 30, Building: "Furnace", Complexity: 2},
+  {Id: 31, Label: "Iron Ingot", Base: 30, Building: "Furnace", Complexity: 2},
+  {Id: 35, Label: "Tungsten Ore", Base: 24, Building: "Furnace", Complexity: 2},
+  {Id: 44, Label: "Silicon", Base: 20, Building: "Furnace", Complexity: 3},
+  {Id: 8, Label: "Stone", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 12, Label: "Copper Ore", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 22, Label: "Wood", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 25, Label: "Wolframite", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 34, Label: "Iron Ore", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 40, Label: "Coal", Base: 7.5, Building: "Extractor", Complexity: 1},
+  {Id: 3, Label: "Wood Plank", Base: 15, Building: "Workshop", Complexity: 2},
+  {Id: 5, Label: "Particle Glue", Base: 20, Building: "Workshop", Complexity: 37},
+  {Id: 7, Label: "Wood Frame", Base: 7.5, Building: "Workshop", Complexity: 3},
+  {Id: 13, Label: "Copper Wire", Base: 30, Building: "Workshop", Complexity: 3},
+  {Id: 17, Label: "Carbon Fiber", Base: 7.5, Building: "Workshop", Complexity: 4},
+  {Id: 18, Label: "Steel Rod", Base: 15, Building: "Workshop", Complexity: 6},
+  {Id: 19, Label: "Coupler", Base: 6, Building: "Workshop", Complexity: 7},
+  {Id: 21, Label: "Condenser Lens", Base: 20, Building: "Workshop", Complexity: 4},
+  {Id: 26, Label: "Heat Sink", Base: 10, Building: "Workshop", Complexity: 3},
+  {Id: 37, Label: "Sand", Base: 40, Building: "Workshop", Complexity: 2},
+  {Id: 42, Label: "Iron Plating", Base: 20, Building: "Workshop", Complexity: 3},
+  {Id: 43, Label: "Iron Gear", Base: 15, Building: "Workshop", Complexity: 3},
+  {Id: 1, Label: "Logic Circuit", Base: 10, Building: "Machine Shop", Complexity: 7},
+  {Id: 6, Label: "Nano Wire", Base: 5, Building: "Machine Shop", Complexity: 8},
+  {Id: 10, Label: "Quantum Entangler", Base: 1, Building: "Machine Shop", Complexity: 43},
+  {Id: 20, Label: "Gyroscope", Base: 5, Building: "Machine Shop", Complexity: 14},
+  {Id: 23, Label: "Electromagnet", Base: 7.5, Building: "Machine Shop", Complexity: 6},
+  {Id: 27, Label: "Rotor", Base: 10, Building: "Machine Shop", Complexity: 10},
+  {Id: 30, Label: "Battery", Base: 2.5, Building: "Machine Shop", Complexity: 10},
+  {Id: 39, Label: "Metal Frame", Base: 5, Building: "Machine Shop", Complexity: 7},
+  {Id: 47, Label: "Energy Cube", Base: 2, Building: "Machine Shop", Complexity: 31}];
+
 var ingredients =
   [{Id: 10, TargetItem: 21, SourceItem: 11, Rate: 60},
   {Id: 11, TargetItem: 17, SourceItem: 15, Rate: 30},
@@ -142,6 +135,7 @@ var ingredients =
   {Id: 89, TargetItem: 48, SourceItem: 47, Rate: (10/3)},
   {Id: 9, TargetItem: 37, SourceItem: 8, Rate: 40},
   {Id: 90, TargetItem: 48, SourceItem: 5, Rate: (200/3)}];
+
 var sortSettings = {
   id: 0,
   label: 1,
@@ -153,17 +147,60 @@ function getItemDetails(itemId){
   return items.find(x => {return x.Id == itemId});
 }
 
-function generateInefficientSummary(){
+function getSubRecipes(recipe, tier = 0){
+  recipe.Tier = tier;
+  var temp = ingredients.filter(x => {return x.TargetItem == recipe.Id;});
+  var subRecipes = temp.map(x => {
+    var obj = {};
+    obj.Id = x.SourceItem;
+    obj.Rate = x.Rate;
+    return obj;
+  });
+  
+  subRecipes.forEach(x => {
+    var item = items.find(y => { return x.Id == y.Id; });
+    x.Parent = recipe;
+    x.Base = item.Base;
+    x.Label = item.Label;
+    x.Building = item.Building;
+    x.Complexity = item.Complexity;
+    x.SubRecipes = getSubRecipes(x, tier+1);
+  });
+  
+  return subRecipes;
 }
 
-function generateEfficientSummary(){
+function multiplyInefficientSummary(inefficientList){
+  inefficientList.forEach(x => {
+    x.Rate *= x.Multiplier;
+    x.SubRecipes.forEach(y => {
+      y.Multiplier = Math.ceil((x.Rate/y.Base) / 0.5) * 0.5;
+      y.SubRecipes = multiplyInefficientSummary(y.SubRecipes);
+    });
+  });
+  
+  return inefficientList;
 }
 
-function generateSummary(isEfficient=false){
-  if (isEfficient)
-     return generateEfficientSummary();
-  else
-    return generateInefficientSummary();
+function generateInefficientSummary(recipeList){
+  recipeList.forEach(recipe => {
+    recipe.Id = recipe.itemId;
+    recipe.Multiplier = recipe.multiplier;
+    delete recipe.itemId;
+    delete recipe.multiplier;
+    recipe.SubRecipes = getSubRecipes(recipe);
+  });
+}
+
+function generateEfficientSummary(inefficientRate){
+}
+
+function generateSummary(recipeList){
+  var ret = {};
+  ret.Inefficient = generateInefficientSummary(recipeList);
+  ret.Efficient = generateEfficientSummary(ret.Inefficient);
+  ret.Inefficient = multiplyInefficientSummary(ret.Inefficient);
+  return ret;
 }
 
 function filterItems(item){
