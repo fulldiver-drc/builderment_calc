@@ -14,9 +14,10 @@ window.selectItem = function(select, isMultiplier=false){
     item.itemId = parseInt(select.value);
     var preview = itemDiv.querySelector('.item-quick-rate');
     preview.setAttribute('itemid', item.itemId);
-    var itemDetail = getItemDetails(item.itemId);
-    preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
   }
+  
+  var itemDetail = getItemDetails(item.itemId);
+  preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
 }
 
 function buildItemList(){
