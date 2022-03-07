@@ -15,7 +15,7 @@ window.selectItem = function(select, isMultiplier=false){
     var preview = itemDiv.querySelector('.item-quick-rate');
     preview.setAttribute('itemid', item.itemId);
     var itemDetail = getItemDetails(item.itemId);
-    preview.innerHTML = `Rate: ${(itemDetail.BaseRate * item.multiplier).toFixed(2)} / min`
+    preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min` + '\n' + `Building: ${itemDetail.Building}`
   }
 }
 
@@ -46,7 +46,7 @@ function buildItemRow(){
   nodeTemplate.innerHTML = `<select required onchange='selectItem(this)' class='item-select'>${optionsText}</select>`;
   nodeTemplate.innerHTML += `<input type='number' placeholder='Total level multiplier' value='1' class='item-multiply' onfocusout='selectItem(this, true)' min=1 />`;
   nodeTemplate.innerHTML += `<a onclick='removeItem(this)' class='ico' removeitem>&#xE108</a><a onclick='addItem()' class='ico' additem>&#xE109</a>`;
-  nodeTemplate.innerHTML += `<div itemid=0 mult=0 class='item-quick-rate'>Rate: N/A</div>`
+  nodeTemplate.innerHTML += `<div itemid=0 mult=0 class='item-quick-rate'>Rate: N/A` + '\nBuilding: N/A</div>'; 
   return nodeTemplate;
 }
 
