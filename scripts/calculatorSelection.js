@@ -33,9 +33,11 @@ function buildItemRow(){
 var itemSelection = document.getElementById('item-selection-main');
 var selectedItems = [];
 
-window.recipeCalculator = {
-  summary: {},
-  selectItem: function(select, isMultiplier=false){
+var RecipeCalculator = function(){
+  this.summary = {};
+  var calc = this;
+  
+  this.selectItem = function(select, isMultiplier=false){
     var itemDiv = select.closest('[itemselect]');
     var item = itemDiv.selectedItem;
     var preview = itemDiv.querySelector('.item-quick-rate');
@@ -54,26 +56,31 @@ window.recipeCalculator = {
       var itemDetail = getItemDetails(item.itemId);
       preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
     }
-  },
-  addItem: function(){
+  };
+  
+  this.addItem = function(){
     var newNode = buildItemRow();
     newNode.selectedItem = {itemId: 0, multiplier: 1};
     document.querySelectorAll('[additem]').forEach(node => {node.remove()});
 
     selectedItems.push(newNode.selectedItem);
     itemSelection.appendChild(newNode);
-  },
-  removeItem: function(button){
+  };
+  
+  this.removeItem = function(button){
     var itemDiv = button.closest('[itemselect]');
     selectedItems.splice(selectedItems.indexOf(itemDiv.selectedItem), 1);
 
     if (!itemDiv.nextElementSibling)
       itemDiv.previousElementSibling.appendChild(buildAddItemButton());
     itemDiv.remove()
-  },
-  logItems: function(){
-    summary = generateSummary(selectedItems);
-    console.log(summary);
-  }
+  };
+  
+  this.logItems = function(){
+    calc.summary = generateSummary(selectedItems);
+    console.log(calc.summary);
+  };
+  return this;
 }
 
+window.recipeCalculator = new RecipeCalculator();
