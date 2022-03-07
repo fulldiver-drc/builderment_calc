@@ -68,7 +68,7 @@ window.recipeCalculator = {
     itemDiv.remove()
   },
   logItems: function(){
-    summary = generateSummary(selectedItems));
+    summary = generateSummary(selectedItems);
     console.log(summary);
   }
 }
