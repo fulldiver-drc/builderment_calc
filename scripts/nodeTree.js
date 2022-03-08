@@ -39,7 +39,7 @@ var NodeTree = function(){
   }
   
   this.preview = function(){
-    var element = event.target;
+    var element = event.currentTarget;
     event.preventDefault();
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
@@ -48,7 +48,7 @@ var NodeTree = function(){
   }
   
   this.toggle = function(){
-    var node = event.target.closest('.tree-node');
+    var node = event.currentTarget.closest('.tree-node');
     var isExpanded = node.hasAttribute('expanded');
     if (isExpanded)
       node.removeAttribute('expanded');
