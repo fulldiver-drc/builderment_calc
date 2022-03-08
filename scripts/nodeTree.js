@@ -37,7 +37,7 @@ var NodeTree = function(){
     });
   }
   
-  this.preview(element){
+  this.preview = function(element){
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
   }
