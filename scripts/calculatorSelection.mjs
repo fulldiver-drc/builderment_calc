@@ -1,10 +1,10 @@
 import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.mjs';
 
 var RecipeCalculator = function(){
-  var summary = {};
   var selectedItems = [];
   var calculateSummary = document.getElementById('calculate-summary');
   var itemSelection = document.getElementById('item-selection-main');
+  var inefficientPlaceholder = document.getElementById('');
   
   function buildItemList(){
     var items = getItemList('', sortSettings.label);
@@ -94,11 +94,27 @@ var RecipeCalculator = function(){
         calculateSummary.removeAttribute('disabled');
   };
   
+  function collapsed(obj){
+    var element = document.createElement('div');
+    element.innerHTML = `<span>${obj.Label}: ${obj.RawRate.toFixed(2)} / min</span>`;
+    return element;
+  }
+  
+  function expanded(obj){
+    var element = document.createElement('div');
+    element.innerHTML = `Item: ${obj.Label}<br/>`;
+    element.innerHTML += `Total Required Level: ${obj.Multiplier}<br/>`;
+    element.innerHTML += `Required Rate: ${obj.RawRate.toFixed(2)}<br/>`;
+    element.innerHTML += `Production Rate: ${obj.Rate.toFixed(2)}`;
+    return element;
+  }
+  
   this.calculateSummary = function(){
     if (!selectedItems.every(checkItemValid))
       return;
-    summary = generateSummary(selectedItems);
-    console.log(calc.summary);
+    var summary = generateSummary(selectedItems);
+    nodeTree.createNode(summary.Inefficient, inefficientPlaceholder, 'SubRecipes', collapsed, expanded);;
+    //console.log(calc.summary);
   };
   
   this.addItem();
