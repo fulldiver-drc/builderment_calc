@@ -161,7 +161,7 @@ function getSubRecipes(recipe, tier = 0){
   var subRecipes = temp.map(x => {
     var obj = {};
     obj.Id = x.SourceItem;
-    obj.Rate = x.Rate;
+    obj.RawRate = x.Rate;
     return obj;
   });
   
@@ -183,6 +183,7 @@ function multiplyInefficientSummary(inefficientList){
     return;
   inefficientList.forEach(x => {
     x.Rate = x.Base * x.Multiplier;
+    x.RawRate *= x.Multiplier;
     x.SubRecipes.forEach(y => {
       y.Multiplier = Math.ceil((x.Multiplier*y.Rate/y.Base) / 0.5) * 0.5;
     });
@@ -195,6 +196,7 @@ function generateInefficientSummary(recipeList){
     recipe.Id = recipe.itemId;
     recipe.Multiplier = recipe.multiplier;
     recipe.Base = getItemDetails(recipe.Id).Base
+    recipe.RawRate = recipe.Base;
     delete recipe.itemId;
     delete recipe.multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
