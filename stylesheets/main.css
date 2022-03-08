@@ -58,7 +58,7 @@ button, a{
   color: var(--primary-color);
 }
 
-button:hover, a:hover{
+button:not([disabled]):hover, a:not([disabled]):hover{
   color: var(--primary-dark);
 }
 
@@ -73,9 +73,11 @@ button.primary{
   color: white;
 }
 
-button.primary:hover{
+button.primary:not([disabled]):hover{
   background: var(--primary-dark);
-  color: white
+}
+button[disabled], a[disabled], [onclick][disabled]{
+  opacity: 0.4;
 }
 
 input:hover, textarea:hover, select:hover{
