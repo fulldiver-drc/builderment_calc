@@ -193,14 +193,10 @@ function multiplyInefficientSummary(inefficientList){
 
 function generateInefficientSummary(recipeList){
   recipeList.forEach(recipe => {
-    var item = getItemDetails(recipe.itemId);
-    recipe.Id = recipe.itemId;
-    recipe.Multiplier = recipe.multiplier;
+    var item = getItemDetails(recipe.Id);
     recipe.Base = item.Base;
     recipe.Label = item.Label;
     recipe.RawRate = recipe.Base;
-    delete recipe.itemId;
-    delete recipe.multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
   });
   return recipeList;
