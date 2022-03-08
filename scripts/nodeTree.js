@@ -9,7 +9,7 @@ var NodeTree = function(){
     var label = document.createElement('div');
     label.setAttribute('class', 'node-label-wrapper');
     label.setAttribute('onclick', 'nodeTree.toggle(this)');
-    label.innerHTML = <div class='node-marker'></div>;
+    label.innerHTML = `<div class='node-marker'></div>`;
     
     var collapsed = collapsedNodeBuilder(objTree);
     collapsed.classList.add('node-label collapsed');
