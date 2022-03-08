@@ -19,3 +19,12 @@
   width: 10px;
   height: 10px;
 }
+
+.node-label{
+  flex-grow: 1;
+}
+
+.tree-node:not([expanded]) > .node-label-wrapper > .node-label.expanded,
+.tree-node[expanded] > .node-label-wrapper > .node-label.collapsed{
+  display: none;
+}
