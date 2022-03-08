@@ -10,7 +10,7 @@ var NodeTree = function(){
       
       if (topLayer){
         parent.innerHTML = '';
-        node.previewPand = preview;
+        node.previewPane = preview;
       }
 
       var labelDiv = document.createElement('div');
