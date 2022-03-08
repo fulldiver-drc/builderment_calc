@@ -50,7 +50,7 @@
 
 .columns-wrapper > div:not(:first-child),
 .menu > *:not(:first-child){
-	margin-left: 20px;
+	margin-left: 30px;
 }
 
 .columns-wrapper > div{
