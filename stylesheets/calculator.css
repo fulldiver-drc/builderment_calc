@@ -14,8 +14,16 @@
 .align-left{
   text-align: left;
 }
+
 #calculate-summary{
   float: right;
+}
+
+#inefficient-placeholder{
+  background: var(--neutral-2);
+  padding: 10px;
+  border: 1px solid var(--neutral-6);
+  border-radius: 4px;
 }
 
 .item-select{
