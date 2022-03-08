@@ -3,37 +3,25 @@
   align-items: center;
 }
 
-.node-marker{
+.node-marker {
   background-image:
-    linear-gradient(45deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%),
-    linear-gradient(135deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%);
-  background-position:
-    50% calc(50% - 0.5ex),
-    50% calc(50% + 0.5ex);
-  background-size:
-    1ex 1ex,
-    1ex 1ex;
+    linear-gradient(45deg, transparent 9%, var(--neutral-6) 11%, var(--neutral-6) 34%, transparent 36%),
+    linear-gradient(135deg, transparent 9%, var(--neutral-6) 11%, var(--neutral-6) 34%, transparent 36%);
+  background-position: calc(50% + 0.125em) calc(50% - 0.25em),
+    calc(50% + 0.125em) calc(50% + 0.25em);
+  background-size: 0.5em 0.5em;
   background-repeat: no-repeat;
-  width: 1ex;
-  height: 1ex;
-  margin-right: 8px;
-}
+  width: 1em;
+  height: 1em;
+  margin-right: 2px;
+  flex: 0 0 auto;
 
 .tree-node[expanded] > .node-label-wrapper > .node-marker{
-  background-image:
-    linear-gradient(45deg, transparent 49%, var(--neutral-6) 51%, var(--neutral-6) 74%, transparent 76%),
-    linear-gradient(135deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%);
-  background-position:
-    calc(50% - 0.5ex) 50%,
-    calc(50% + 0.5ex) 50%;
+  transform: rotate(90deg);
 }
 
 .node-label{
   flex-grow: 1;
-}
-
-.tree-node .tree-node{
-  border-left: 1px solid var(--neutral-6);
 }
 
 .tree-node:not([expanded]) > .node-label-wrapper > .node-label.expanded,
@@ -43,6 +31,8 @@
 }
 
 .subtree-wrapper{
-  padding-left: 8px;
+  margin-left: 6.5px;
+  border-left: 1px solid var(--neutral-6);
+  padding-left: 6.5px;
 }
 
