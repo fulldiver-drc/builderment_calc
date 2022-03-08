@@ -30,7 +30,7 @@ var NodeTree = function(){
     parent.appendChild(node);
   }
   
-  this.toggle(element){
+  this.toggle(element) = function{
     var node = element.closest('tree-node');
     var isExpanded = node.hasAttribute('expanded');
     if (isExpanded){
