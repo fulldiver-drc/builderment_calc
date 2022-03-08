@@ -42,10 +42,10 @@ var NodeTree = function(){
   this.preview = function(){
     var element = event.currentTarget;
     
-    var rootNode = element.closest('.tree-node:not(.tree-node .tree-node)');
+    var rootNode = element.closest('.tree-node:not(.tree-node .tree-node)').parentElement;
     rootNode.previewPane.innerHTML = '';
     rootNode.previewPane.appendChild(element.previewNode);
-    rootNode.parentElement.querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
+    rootNode.querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
     
     element.setAttribute('selected', '');
   }
