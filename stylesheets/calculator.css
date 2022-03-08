@@ -23,6 +23,33 @@
   display: none;
 }
 
+#inefficient-wrapper{
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--neutral-6);
+  border-radius: 4px;
+  background: white;
+  padding: 10px;
+}
+
+#inefficient-nodetree{
+  flex: 0 0 auto;
+  resize: horizontal;
+  border-right: 1px solid var(--neutral-6);
+}
+
+#inefficient-nodetree::after{
+  height: 100%;
+  content: '';
+  width: 2px;
+  border-right: 1px solid var(--neutral-6); 
+  
+}
+
+#inefficient-preview{
+  flex: 1 1 0;
+}
+
 #inefficient-placeholder > .tree-node{
   background: var(--neutral-1);
   padding: 10px;
