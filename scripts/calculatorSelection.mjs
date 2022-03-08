@@ -1,8 +1,10 @@
 import {getItemList, getItemDetails, sortSettings, generateSummary} from './itemManagement.mjs';
 
 var RecipeCalculator = function(){
-  this.summary = {};
-  var calc = this;
+  var summary = {};
+  var selectedItems = [];
+  var calculateSummary = document.getElementById('calculate-summary');
+  var itemSelection = document.getElementById('item-selection-main');
   
   function buildItemList(){
     var items = getItemList('', sortSettings.label);
@@ -38,14 +40,11 @@ var RecipeCalculator = function(){
     return item.itemId !== 0 && item.multiplier >= 1;
   }
 
-  var itemSelection = document.getElementById('item-selection-main');
-  var selectedItems = [];
-
   this.selectItem = function(select, isMultiplier=false){
     var itemDiv = select.closest('[itemselect]');
     var item = itemDiv.selectedItem;
     var preview = itemDiv.querySelector('.item-quick-rate');
-    var calculateSummary = document.getElementById('calculate-summary');
+    
 
     if (isMultiplier){
       if (select.valueAsNumber < 1)
@@ -75,6 +74,7 @@ var RecipeCalculator = function(){
 
     selectedItems.push(newNode.selectedItem);
     itemSelection.appendChild(newNode);
+    calculateSummary.setAttribute('disabled');
   };
   
   this.removeItem = function(button){
@@ -89,7 +89,7 @@ var RecipeCalculator = function(){
   this.calculateSummary = function(){
     if (!selectedItems.every(checkItemValid))
       return;
-    calc.summary = generateSummary(selectedItems);
+    summary = generateSummary(selectedItems);
     console.log(calc.summary);
   };
   return this;
