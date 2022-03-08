@@ -82,9 +82,16 @@ var RecipeCalculator = function(){
     var itemDiv = button.closest('[itemselect]');
     selectedItems.splice(selectedItems.indexOf(itemDiv.selectedItem), 1);
 
-    if (!itemDiv.nextElementSibling)
-      itemDiv.previousElementSibling.appendChild(buildAddItemButton());
+    if (!itemDiv.nextElementSibling){
+      var prev = itemDiv.previousElementSibling;
+      var ref = prev.querySelector('[removeitem]');
+      ref.parent.insertBefore(buildAddItemButton(), ref.nextElementSibling);
+    }
+    
     itemDiv.remove()
+    
+    if (selectedItems.every(checkItemValid))
+        calculateSummary.removeAttribute('disabled');
   };
   
   this.calculateSummary = function(){
