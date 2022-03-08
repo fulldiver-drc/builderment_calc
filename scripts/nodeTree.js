@@ -41,8 +41,6 @@ var NodeTree = function(){
   }
   
   this.preview = function(){
-    event.preventDefault();
-    
     var element = event.currentTarget;
     
     var rootNode = element.closest('.tree-node:not(.tree-node .tree-node)');
@@ -54,6 +52,7 @@ var NodeTree = function(){
   }
   
   this.toggle = function(){
+    event.preventDefault();
     var node = event.currentTarget.closest('.tree-node');
     var isExpanded = node.hasAttribute('expanded');
     if (isExpanded)
