@@ -93,7 +93,7 @@ var RecipeCalculator = function(){
     console.log(calc.summary);
   };
   
-  calc.addItem();
+  this.addItem();
   return this;
 }
 
