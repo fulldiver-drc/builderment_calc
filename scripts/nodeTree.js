@@ -30,7 +30,7 @@ var NodeTree = function(){
       if (subTree && subTree.length > 0){
         var subNode = document.createElement('div');
         subNode.setAttribute('class', 'subtree-wrapper');
-        tree.createNode(subTree, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder, preview, false);
+        tree.createNode(subTree, subNode, subTreeLabel, labelBuilder, previewBuilder, preview, false);
         node.appendChild(subNode);
       }
       parent.appendChild(node);
