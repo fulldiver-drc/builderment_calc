@@ -9,14 +9,14 @@
     linear-gradient(45deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%),
     linear-gradient(135deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%);
   background-position:
-    50% calc(50% - 4px),
-    50% calc(50% + 4px);
+    50% calc(50% - 0.5ex),
+    50% calc(50% + 0.5ex);
   background-size:
-    8px 8px,
-    8px 8px;
+    1ex 1ex,
+    1ex 1ex;
   background-repeat: no-repeat;
-  width: 24px;
-  height: 24px;
+  width: 1ex;
+  height: 1ex;
 }
 
 .tree-node[expanded] > .node-label-wrapper > .node-marker{
@@ -24,8 +24,8 @@
     linear-gradient(45deg, transparent 49%, var(--neutral-6) 51%, var(--neutral-6) 74%, transparent 76%),
     linear-gradient(135deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%);
   background-position:
-    calc(50% - 4px) 50%,
-    calc(50% + 4px) 50%;
+    calc(50% - 0.5ex) 50%,
+    calc(50% + 0.5ex) 50%;
 }
 
 .node-label{
