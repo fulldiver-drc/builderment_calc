@@ -1,7 +1,6 @@
 .node-label-wrapper{
   display: flex;
-  align-items: flex-start;
-  padding: 4px;
+  align-items: center;
 }
 
 .node-marker{
@@ -17,6 +16,7 @@
   background-repeat: no-repeat;
   width: 1ex;
   height: 1ex;
+  margin-right: 8px;
 }
 
 .tree-node[expanded] > .node-label-wrapper > .node-marker{
@@ -30,7 +30,6 @@
 
 .node-label{
   flex-grow: 1;
-  padding-top: 2px;
 }
 
 .tree-node .tree-node{
@@ -44,6 +43,6 @@
 }
 
 .subtree-wrapper{
-  padding-left: 16px;
+  padding-left: 8px;
 }
 
