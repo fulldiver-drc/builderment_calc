@@ -1,4 +1,5 @@
 var NodeTree = function(){
+  var tree = this;
   this.createNode = function(objTree, parent, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder){
     parent.innerHTML = '';
     
@@ -23,7 +24,7 @@ var NodeTree = function(){
     if (subTree && subTree.length > 0){
       var subNode = document.createElement('div');
       subNode.setAttribute('class', 'subtree-wrapper');
-      subTree.forEach(x => {NodeTree(x, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
+      subTree.forEach(x => {tree.createNode(x, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
       node.appendChild(subNode);
     }
     parent.appendChild(node);
