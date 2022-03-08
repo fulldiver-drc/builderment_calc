@@ -9,7 +9,6 @@ var NodeTree = function(){
       node.setAttribute('class', 'tree-node');
       
       if (topLayer){
-        parent.innerHTML = '';
         node.previewPane = preview;
       }
 
