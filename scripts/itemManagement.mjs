@@ -284,4 +284,4 @@ function getItemList(searchKey, sortSetting = 0){
     
 }
 
-export {getItemDetails, generateSummary, sortSettings, getItemList, level};
+module.exports = {getItemDetails, generateSummary, sortSettings, getItemList, level}
