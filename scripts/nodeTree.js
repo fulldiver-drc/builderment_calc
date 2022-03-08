@@ -38,8 +38,8 @@ var NodeTree = function(){
     });
   }
   
-  this.preview = function(e){
-    var element = e.target;
+  this.preview = function(){
+    var element = event.target;
     e.preventDefault();
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
@@ -47,8 +47,8 @@ var NodeTree = function(){
     element.setAttribute('selected', '');
   }
   
-  this.toggle = function(e){
-    var node = e.target.closest('.tree-node');
+  this.toggle = function(){
+    var node = event.target.closest('.tree-node');
     var isExpanded = node.hasAttribute('expanded');
     if (isExpanded)
       node.removeAttribute('expanded');
