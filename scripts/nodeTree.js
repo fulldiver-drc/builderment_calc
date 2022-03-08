@@ -1,6 +1,6 @@
 var NodeTree = function(){
   var tree = this;
-  this.createNode = function(objTree, parent, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder, topLayer = true;){
+  this.createNode = function(objTree, parent, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder, topLayer = true){
     objTree.forEach(obj => {
       if (topLayer)
         parent.innerHTML = '';
