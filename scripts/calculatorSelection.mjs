@@ -47,9 +47,10 @@ var RecipeCalculator = function(){
     
 
     if (isMultiplier){
-      if (select.valueAsNumber < 1)
+      if (isNaN(select.valueAsNumber) || select.valueAsNumber < 1)
          select.value = 1;
-      select.value = Math.ceil(select.valueAsNumber/0.5) * 0.5;
+      else 
+        select.value = Math.ceil(select.valueAsNumber/0.5) * 0.5;
       item.multiplier = select.valueAsNumber;
     }
     else
@@ -62,7 +63,7 @@ var RecipeCalculator = function(){
     else{
       var itemDetail = getItemDetails(item.itemId);
       preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
-      if (!selectedItems.every(checkItemValid))
+      if (selectedItems.every(checkItemValid))
         calculateSummary.removeAttribute('disabled');
     }
   };
