@@ -25,7 +25,7 @@ var NodeTree = function(){
       if (subTree && subTree.length > 0){
         var subNode = document.createElement('div');
         subNode.setAttribute('class', 'subtree-wrapper');
-        tree.createNode(subTree, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
+        tree.createNode(subTree, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder);
         node.appendChild(subNode);
       }
       parent.appendChild(node);
