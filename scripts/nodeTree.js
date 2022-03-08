@@ -1,15 +1,15 @@
 var NodeTree = function(){
   var tree = this;
   this.createNode = function(objTree, parent, subTreeLabel, labelBuilder, previewBuilder, preview, topLayer = true){
-    objTree.forEach(obj => {
+    objTree.forEach((obj, ind) => {
       
       var subTree = obj[subTreeLabel];
       
       var node = document.createElement('div');
       node.setAttribute('class', 'tree-node');
       
-      if (topLayer){
-        node.previewPane = preview;
+      if (topLayer && ind === 0){
+        parent.previewPane = preview;
       }
 
       var labelDiv = document.createElement('div');
@@ -45,7 +45,7 @@ var NodeTree = function(){
     var rootNode = element.closest('.tree-node:not(.tree-node .tree-node)');
     rootNode.previewPane.innerHTML = '';
     rootNode.previewPane.appendChild(element.previewNode);
-    rootNode.querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
+    rootNode.parentElement.querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
     
     element.setAttribute('selected', '');
   }
