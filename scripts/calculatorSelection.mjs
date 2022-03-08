@@ -85,7 +85,7 @@ var RecipeCalculator = function(){
     if (!itemDiv.nextElementSibling){
       var prev = itemDiv.previousElementSibling;
       var ref = prev.querySelector('[removeitem]');
-      ref.parent.insertBefore(buildAddItemButton(), ref.nextElementSibling);
+      ref.parentElement.insertBefore(buildAddItemButton(), ref.nextElementSibling);
     }
     
     itemDiv.remove()
