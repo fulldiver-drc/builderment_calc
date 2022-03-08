@@ -92,7 +92,11 @@ var RecipeCalculator = function(){
     summary = generateSummary(selectedItems);
     console.log(calc.summary);
   };
+  
+  addItem();
   return this;
 }
 
-window.recipeCalculator = new RecipeCalculator();
+document.addEventListener('DOMContentLoaded', function(){
+  window.recipeCalculator = new RecipeCalculator();
+});
