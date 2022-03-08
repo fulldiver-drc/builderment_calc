@@ -19,8 +19,8 @@
   float: right;
 }
 
-#inefficient-placeholder{
-  background: var(--neutral-2);
+#inefficient-placeholder > .tree-node{
+  background: var(--neutral-1);
   padding: 10px;
   border: 1px solid var(--neutral-6);
   border-radius: 4px;
