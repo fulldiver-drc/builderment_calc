@@ -11,14 +11,16 @@ var NodeTree = function(){
       label.setAttribute('class', 'node-label-wrapper');
       label.setAttribute('onclick', 'nodeTree.toggle(this)');
       label.innerHTML = `<div class='node-marker'></div>`;
+      node.appendChild(label);
 
       var collapsed = collapsedNodeBuilder(obj);
-      collapsed.classList.add('node-label collapsed');
+      collapsed.classList.add('node-label');
+      collapsed.classList.add('collapsed');
+      label.appendChild(collapsed);
 
       var expanded = expandedNodeBuilder(obj);
-      expanded.classList.add('node-label expanded');
-      node.appendChild(label);
-      label.appendChild(collapsed);
+      expanded.classList.add('node-label');
+      expanded.classList.add('expanded');
       label.appendChild(expanded);
 
       var subTree = obj[subTreeLabel];
