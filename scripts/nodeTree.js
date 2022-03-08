@@ -24,6 +24,7 @@ var NodeTree = function(){
       subTree.forEach(x => {NodeTree(x, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
       node.appendChild(subNode);
     }
+    parent.appendChild(node);
   }
   
   this.toggle(element){
