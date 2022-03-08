@@ -4,7 +4,7 @@ var RecipeCalculator = function(){
   var selectedItems = [];
   var calculateSummary = document.getElementById('calculate-summary');
   var itemSelection = document.getElementById('item-selection-main');
-  var inefficientPlaceholder = document.getElementById('');
+  var inefficientPlaceholder = document.getElementById('inefficient-placeholder');
   
   function buildItemList(){
     var items = getItemList('', sortSettings.label);
