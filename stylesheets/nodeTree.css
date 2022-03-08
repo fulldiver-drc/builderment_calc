@@ -7,7 +7,7 @@
   flex-grow: 1;
 }
 
-.node-label[selected]{
+.node-label[selected] > span{
   background: blue;
   color: white;
 }
