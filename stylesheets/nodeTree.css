@@ -1,6 +1,7 @@
 .node-label-wrapper{
   display: flex;
   align-items: flex-start;
+  padding: 4px;
 }
 
 .node-marker{
@@ -8,23 +9,31 @@
     linear-gradient(45deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%),
     linear-gradient(135deg, transparent 24%, var(--neutral-6) 26%, var(--neutral-6) 49%, transparent 51%);
   background-position:
-    50% calc(50% - 2.5px),
-    50% calc(50% + 2.5px);
+    50% calc(50% - 4px),
+    50% calc(50% + 4px);
   background-size:
-    5px 5px,
-    5px 5px;
+    8px 8px,
+    8px 8px;
   background-repeat: no-repeat;
-  margin: 12px;
-  border-right: 1px solid var(--neutral-6);
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .node-label{
   flex-grow: 1;
 }
 
+.tree-node .tree-node{
+  border-left: 1px solid var(--neutral-6);
+}
+
 .tree-node:not([expanded]) > .node-label-wrapper > .node-label.expanded,
+.tree-node:not([expanded]) > .subtree-wrapper,
 .tree-node[expanded] > .node-label-wrapper > .node-label.collapsed{
   display: none;
 }
+
+.subtree-wrapper{
+  padding-left: 1px;
+}
+
