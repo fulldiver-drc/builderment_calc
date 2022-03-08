@@ -74,7 +74,7 @@ var RecipeCalculator = function(){
 
     selectedItems.push(newNode.selectedItem);
     itemSelection.appendChild(newNode);
-    calculateSummary.setAttribute('disabled');
+    calculateSummary.setAttribute('disabled', '');
   };
   
   this.removeItem = function(button){
