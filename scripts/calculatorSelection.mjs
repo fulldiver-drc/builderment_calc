@@ -19,7 +19,7 @@ var RecipeCalculator = function(){
 
   function buildAddItemButton(){
     var nodeTemplate = document.createElement('a');
-    nodeTemplate.setAttribute('onclick', 'addItem()');
+    nodeTemplate.setAttribute('onclick', 'recipeCalculator.addItem()');
     nodeTemplate.setAttribute('class', 'ico');
     nodeTemplate.setAttribute('additem', '');
     nodeTemplate.innerHTML = '&#xE109';
