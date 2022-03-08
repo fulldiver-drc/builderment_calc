@@ -96,6 +96,7 @@
 
 .tab-content{
   display: none;
+  padding: 20px 0;
 }
 
 .tab-content[active]{
