@@ -12,6 +12,10 @@
   color: white;
 }
 
+.node-label:only-child{
+  margin-left: 2px;
+}
+
 .node-marker {
   background-image:
     linear-gradient(45deg, transparent 9%, var(--neutral-6) 11%, var(--neutral-6) 34%, transparent 36%),
