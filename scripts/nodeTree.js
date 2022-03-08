@@ -4,9 +4,11 @@ var NodeTree = function(){
     objTree.forEach(obj => {
       if (topLayer)
         parent.innerHTML = '';
-
+      
+      
       var node = document.createElement('div');
       node.setAttribute('class', 'tree-node');
+      node.rootNode = parent;
 
       var labelDiv = document.createElement('div');
       labelDiv.setAttribute('class', 'node-label-wrapper');
@@ -40,6 +42,8 @@ var NodeTree = function(){
   this.preview = function(element){
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
+    element.closest('.tree-node').rootNode.querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
+    element.setAttribute('selected', '');
   }
   
   this.toggle = function(element){
