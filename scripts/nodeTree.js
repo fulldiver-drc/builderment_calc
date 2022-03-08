@@ -14,7 +14,7 @@ var NodeTree = function(){
       
       var marker = document.createElement('div');
       marker.setAttribute('class', 'node-marker');
-      marker.setAttribute('onclick', 'nodeTree.toggle(this)');
+      marker.setAttribute('onclick', 'nodeTree.toggle()');
       labelDiv.appendChild(marker);
       node.appendChild(labelDiv);
 
@@ -23,8 +23,8 @@ var NodeTree = function(){
       label.classList.add('node-label');
       label.previewPane = preview;
       label.previewNode = previewNode;
-      label.setAttribute('onclick', 'nodeTree.preview(this)');
-      label.setAttribute('ondblclick', 'nodeTree.toggle(this)');
+      label.setAttribute('onclick', 'nodeTree.preview()');
+      label.setAttribute('ondblclick', 'nodeTree.toggle()');
       labelDiv.appendChild(label);
 
       var subTree = obj[subTreeLabel];
@@ -38,15 +38,17 @@ var NodeTree = function(){
     });
   }
   
-  this.preview = function(element){
+  this.preview = function(e){
+    var element = e.target;
+    e.preventDefault();
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
     element.closest('.tree-node:not(.tree-node .tree-node)').querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
     element.setAttribute('selected', '');
   }
   
-  this.toggle = function(element){
-    var node = element.closest('.tree-node');
+  this.toggle = function(e){
+    var node = e.target.closest('.tree-node');
     var isExpanded = node.hasAttribute('expanded');
     if (isExpanded)
       node.removeAttribute('expanded');
