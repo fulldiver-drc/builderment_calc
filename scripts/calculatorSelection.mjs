@@ -114,6 +114,7 @@ var RecipeCalculator = function(){
       return;
     var summary = generateSummary(selectedItems);
     nodeTree.createNode(summary.Inefficient, inefficientPlaceholder, 'SubRecipes', collapsed, expanded);;
+    console.log(summary)
     //console.log(calc.summary);
   };
   
