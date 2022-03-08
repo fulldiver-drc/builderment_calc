@@ -40,7 +40,7 @@ var NodeTree = function(){
   
   this.preview = function(){
     var element = event.target;
-    e.preventDefault();
+    event.preventDefault();
     element.previewPane.innerHTML = '';
     element.previewPane.appendChild(element.previewNode);
     element.closest('.tree-node:not(.tree-node .tree-node)').querySelectorAll('.node-label[selected]').forEach(x => {x.removeAttribute('selected');});
