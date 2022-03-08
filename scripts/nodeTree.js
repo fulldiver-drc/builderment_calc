@@ -12,20 +12,20 @@ var NodeTree = function(){
       label.setAttribute('onclick', 'nodeTree.toggle(this)');
       label.innerHTML = `<div class='node-marker'></div>`;
 
-      var collapsed = collapsedNodeBuilder(objTree);
+      var collapsed = collapsedNodeBuilder(obj);
       collapsed.classList.add('node-label collapsed');
 
-      var expanded = expandedNodeBuilder(objTree);
+      var expanded = expandedNodeBuilder(obj);
       expanded.classList.add('node-label expanded');
       node.appendChild(label);
       label.appendChild(collapsed);
       label.appendChild(expanded);
 
-      var subTree = objTree[subTreeLabel];
+      var subTree = obj[subTreeLabel];
       if (subTree && subTree.length > 0){
         var subNode = document.createElement('div');
         subNode.setAttribute('class', 'subtree-wrapper');
-        subTree.forEach(x => {tree.createNode(x, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
+        tree.createNode(subTree, subNode, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder)});
         node.appendChild(subNode);
       }
       parent.appendChild(node);
