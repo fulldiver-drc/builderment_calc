@@ -6,6 +6,7 @@ var RecipeCalculator = function(){
   var itemSelection = document.getElementById('item-selection-main');
   var inefficientNodeTree = document.getElementById('inefficient-nodetree');
   var step2 = document.getElementById('step2');
+  var inefficientPreview = document.getElementById('inefficient-preview');
   
   function buildItemList(){
     var items = getItemList('', sortSettings.label);
@@ -95,17 +96,18 @@ var RecipeCalculator = function(){
         calculateSummary.removeAttribute('disabled');
   };
   
-  function collapsed(obj){
+  function label(obj){
     var element = document.createElement('div');
     element.innerHTML = `<span>${obj.Label}: ${obj.RawRate.toFixed(2)} / min</span>`;
     return element;
   }
   
-  function expanded(obj){
+  function preview(obj){
     var element = document.createElement('div');
     element.innerHTML = `Item: ${obj.Label}<br/>`;
-    element.innerHTML += `Total Required Level: ${obj.Multiplier}<br/>`;
     element.innerHTML += `Required Rate: ${obj.RawRate.toFixed(2)}<br/>`;
+    element.innerHTML += `Building: ${obj.Building}<br/>`;
+    element.innerHTML += `Total Required Level: ${obj.Multiplier}<br/>`;
     element.innerHTML += `Production Rate: ${obj.Rate.toFixed(2)}`;
     return element;
   }
@@ -114,7 +116,7 @@ var RecipeCalculator = function(){
     if (!selectedItems.every(checkItemValid))
       return;
     var summary = generateSummary(selectedItems);
-    nodeTree.createNode(summary.Inefficient, inefficientNodeTree, 'SubRecipes', collapsed, expanded);
+    nodeTree.createNode(summary.Inefficient, inefficientNodeTree, 'SubRecipes', label, preview, inefficientPreview);
     step2.removeAttribute('disabled');
     console.log(summary)
     //console.log(calc.summary);
