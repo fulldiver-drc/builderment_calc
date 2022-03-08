@@ -19,6 +19,12 @@
   height: 24px;
 }
 
+.tree-node[expanded] > .node-label-wrapper > .node-marker{
+  background-position:
+    calc(50% + 4px) 50%,
+    calc(50% - 4px) 50% ;
+}
+
 .node-label{
   flex-grow: 1;
 }
@@ -34,6 +40,6 @@
 }
 
 .subtree-wrapper{
-  padding-left: 12px;
+  padding-left: 16px;
 }
 
