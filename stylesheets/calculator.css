@@ -19,9 +19,18 @@
   float: right;
 }
 
+#step2{
+  height: max(calc(100vh - 120px), 600px);
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs{
+  flex-grow: 1;
+}
+
 #step2[disabled] > *{
   display: none;
-  height: calc(100vh - 120px);
 }
 
 #inefficient-wrapper{
