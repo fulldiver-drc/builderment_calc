@@ -37,14 +37,19 @@
   flex: 0 0 auto;
   resize: horizontal;
   border-right: 1px solid var(--neutral-6);
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  padding-right: 10px;
 }
 
 #inefficient-nodetree::after{
-  height: 100%;
-  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
   width: 2px;
-  border-right: 1px solid var(--neutral-6); 
-  
+  border-left: 1px solid var(--neutral-6); 
 }
 
 #inefficient-preview{
