@@ -1,5 +1,7 @@
 var NodeTree = function(){
   this.createNode = function(objTree, parent, subTreeLabel, collapsedNodeBuilder, expandedNodeBuilder){
+    parent.innerHTML = '';
+    
     var node = document.createElement('div');
     node.setAttribute('class', 'tree-node');
     
