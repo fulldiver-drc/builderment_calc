@@ -38,6 +38,7 @@
 }
 
 #inefficient-wrapper{
+  flex-grow: 1;
   display: flex;
   align-items: stretch;
   border: 1px solid var(--neutral-6);
@@ -121,9 +122,10 @@
 .tab-content{
   flex-grow: 1;
   display: none;
+  align-items: stretch;
   padding: 20px 0;
 }
 
 .tab-content[active]{
-  display: block;
+  display: flex;
 }
