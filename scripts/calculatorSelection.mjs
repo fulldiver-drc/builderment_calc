@@ -39,7 +39,7 @@ var RecipeCalculator = function(){
   }
   
   function checkItemValid(item){
-    return item.itemId !== 0 && item.multiplier >= 1;
+    return item.Id !== 0 && item.Multiplier >= 1;
   }
 
   this.selectItem = function(select, isMultiplier=false){
@@ -53,18 +53,18 @@ var RecipeCalculator = function(){
          select.value = 1;
       else 
         select.value = Math.ceil(select.valueAsNumber/0.5) * 0.5;
-      item.multiplier = select.valueAsNumber;
+      item.Multiplier = select.valueAsNumber;
     }
     else
-      item.itemId = parseInt(select.value);
+      item.Id = parseInt(select.value);
 
-    if (item.itemId === 0){
+    if (item.Id === 0){
       preview.innerHTML = `Rate: N/A<br/>Building: N/A`
       calculateSummary.setAttribute('disabled', '');
     }
     else{
-      var itemDetail = getItemDetails(item.itemId);
-      preview.innerHTML = `Rate: ${(itemDetail.Base * item.multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
+      var itemDetail = getItemDetails(item.Id);
+      preview.innerHTML = `Rate: ${(itemDetail.Base * item.Multiplier).toFixed(2)} / min<br/>Building: ${itemDetail.Building}`
       if (selectedItems.every(checkItemValid))
         calculateSummary.removeAttribute('disabled');
     }
@@ -72,7 +72,7 @@ var RecipeCalculator = function(){
   
   this.addItem = function(){
     var newNode = buildItemRow();
-    newNode.selectedItem = {itemId: 0, multiplier: 1};
+    newNode.selectedItem = {Id: 0, Multiplier: 1};
     document.querySelectorAll('[additem]').forEach(node => {node.remove()});
 
     selectedItems.push(newNode.selectedItem);
