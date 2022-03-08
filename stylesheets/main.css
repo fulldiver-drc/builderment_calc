@@ -87,6 +87,7 @@ input:focus, textarea:focus, select:focus{
 
 [disabled]{
   opacity: 0.4;
+  cursor: default !important;
 }
 
 select{
