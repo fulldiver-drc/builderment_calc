@@ -110,11 +110,11 @@ var RecipeCalculator = function(){
     details.innerHTML = `Required Rate: ${obj.RawRate.toFixed(2)} / min<br/>Building: ${obj.Building}<br/>Total Required Multiplier: ${Math.ceil(obj.Multiplier / 0.5) * 0.5}`;
     
     if (obj.SubRecipes && obj.SubRecipes.length > 0){
-      details.innerHTML += 'Ingredients:<br/>';
-      var ingredients = document.createElement('div');
+      details.innerHTML += '<br/>Ingredients:';
+      var ingredients = document.createElement('ul');
       ingredients.setAttribute('style', 'margin-left: 20px;');
       obj.SubRecipes.forEach(x => {
-        ingredients.innerHTML += `-${x.Label}: ${x.RawRate.toFixed(2)} / min<br/>`;
+        ingredients.innerHTML += `<li>${x.Label}: ${x.RawRate.toFixed(2)} / min</li>`;
       });
       details.appendChild(ingredients);
     }
