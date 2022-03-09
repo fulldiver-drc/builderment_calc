@@ -290,7 +290,7 @@ function generateEfficientSummary(inefficientRate){
   }
   
   multiplySummary(copy);
-  return copy;
+  return flatArray;
 }
 
 function generateSummary(recipeList){
