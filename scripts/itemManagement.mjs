@@ -195,6 +195,7 @@ function generateInefficientSummary(recipeList){
   recipeList.forEach(recipe => {
     var item = getItemDetails(recipe.Id);
     recipe.Base = item.Base;
+    recipe.Building = item.Building;
     recipe.Label = item.Label;
     recipe.RawRate = recipe.Base;
     recipe.SubRecipes = getSubRecipes(recipe);
