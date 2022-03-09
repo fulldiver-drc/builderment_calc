@@ -239,11 +239,11 @@ function removeRecipe(recipe){
   /*if (recipe.Parent !== null){
     ind = recipe.Parent.SubRecipes.indexOf(recipe);
     recipe.Parent.SubRecipes.splice(ind, 1);
-  }
   }*/
   if (recipe.SubRecipes && recipe.SubRecipes.length > 0){
     recipe.SubRecipes.forEach(removeRecipe, flatArray);
     //delete recipe.SubRecipes;
+  }
 }
 
 function attemptCombine(flatArray, index){
