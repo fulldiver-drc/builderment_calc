@@ -179,17 +179,19 @@ function getSubRecipes(recipe, tier = 0){
 }
 
 function generateInefficientSummary(recipeList){
-  recipeList.forEach(recipe => {
+  return recipeList.map(recipe => {
     var item = getItemDetails(recipe.Id);
-    recipe.Parent = null;
-    recipe.Base = item.Base;
-    recipe.Building = item.Building;
-    recipe.Complexity = item.Complexity;
-    recipe.Label = item.Label;
-    recipe.RawRate = recipe.Base * recipe.Multiplier;
-    recipe.SubRecipes = getSubRecipes(recipe);
+    var obj = {};
+    obj.Parent = null;
+    obj.Base = item.Base;
+    obj.Building = item.Building;
+    obj.Complexity = item.Complexity;
+    obj.Label = item.Label;
+    obj.Id = recipe.Id;
+    obj.Multiplier = recipe.Multiplier;
+    obj.RawRate = obj.Base * obj.Multiplier;
+    obj.SubRecipes = getSubRecipes(obj);
   });
-  return recipeList;
 }
 
 function deepCopyRecipe(recipe){
@@ -236,13 +238,8 @@ function removeRecipe(recipe){
   var flatArray = this;
   var ind = flatArray.indexOf(recipe);
   flatArray.splice(ind, 1);
-  /*if (recipe.Parent !== null){
-    ind = recipe.Parent.SubRecipes.indexOf(recipe);
-    recipe.Parent.SubRecipes.splice(ind, 1);
-  }*/
   if (recipe.SubRecipes && recipe.SubRecipes.length > 0){
     recipe.SubRecipes.forEach(removeRecipe, flatArray);
-    //delete recipe.SubRecipes;
   }
 }
 
@@ -271,7 +268,9 @@ function finalizeSummary(inefficientList, isFlat = false){
     delete x.Tier;
     delete x.Complexity
     if (isFlat)
-      delete x.SubRecipes
+      delete x.SubRecipes;
+    else
+      delete x.Id;
   });
 }
 
