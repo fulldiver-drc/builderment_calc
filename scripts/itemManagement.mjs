@@ -178,22 +178,10 @@ function getSubRecipes(recipe, tier = 0){
   return subRecipes;
 }
 
-function multiplyInefficientSummary(inefficientList){
-  if (!inefficientList)
-    return;
-  inefficientList.forEach(x => {
-    x.Rate = x.Base * x.Multiplier;
-    x.SubRecipes.forEach(y => {
-      y.RawRate *= x.Multiplier;
-      y.Multiplier = y.RawRate/y.Base;
-    });
-    multiplyInefficientSummary(x.SubRecipes);
-  });
-}
-
 function generateInefficientSummary(recipeList){
   recipeList.forEach(recipe => {
     var item = getItemDetails(recipe.Id);
+    recipe.Parent = null;
     recipe.Base = item.Base;
     recipe.Building = item.Building;
     recipe.Label = item.Label;
@@ -203,14 +191,113 @@ function generateInefficientSummary(recipeList){
   return recipeList;
 }
 
+function deepCopyRecipe(recipe){
+  var obj = {};
+  obj.Parent = this;
+  obj.Label = recipe.Label;
+  obj.RawRate = recipe.RawRate;
+  obj.Building = recipe.Building;
+  obj.Base = recipe.Base;
+  obj.Multiplier = recipe.Multiplier;
+  obj.SubRecipes = recipe.SubRecipes.map(deepCopyRecipe, obj);
+  return obj;
+}
+
+function flattenRecipeTree(recipeTree){
+  var flatArray = [];
+  recipeTree.forEach(recipe => {
+    flatArray.push(recipe);
+    if (recipe.SubRecipes && recipe.SubRecipes.length > 0)
+      flatArray = flatArray.concat(flattenRecipeTree(recipe.SubRecipes));
+  });
+  return flatArray;
+}
+
+function getEffectiveMultiplier(recipe, firstCall = true){
+  if (recipe.Parent === null)
+    return recipe.Multiplier;
+  var mult = getEffectiveMultiplier(recipe.Parent, false);
+  if (firstCall)
+    return mult;
+  return recipe.RawRate*mult/recipe.Base;
+}
+
+function combineRecipes(target, source){
+  var targetMult = getEffectiveMultiplier(target);
+  var sourceMult = getEffectiveMultiplier(source);
+  target.RawRate = ((target.RawRate * targetMult) + (source.RawRate * sourceMult)) / targetMult;
+  return target;
+}
+
+function removeRecipe(recipe){
+  var flatArray = this;
+  var ind = flatArray.indexOf(recipe);
+  this.splice(ind, 1);
+  if (recipe.Parent !== null){
+    ind = recipe.Parent.SubRecipes.indexOf(recipe);
+    recipe.Parent.SubRecipes.splice(ind, 1);
+    delete recipe.Parent;
+  }
+  if (recipe.SubRecipes && recipe.SubRecipes.length > 0){
+    recipe.SubRecipes.forEach(removeRecipe, flatArray);
+    delete recipe.SubRecipes;
+  }
+}
+
+function attemptCombine(flatArray, index){
+  var recipe = flatArray[i];
+  var toCombine = flatArray.filter(x => {return x.Label == recipe.Label});
+  if (toCombine.length <= 1)
+    return;
+  toCombine.reduce(combineRecipes);
+  toCombine.shift();
+  toCombine.forEach(removeRecipe, flatArray);
+}
+
+function multiplySummary(inefficientList){
+  if (!inefficientList || inefficientList.length == 0)
+    return;
+  inefficientList.forEach(x => {
+    x.Rate = x.Base * x.Multiplier;
+    delete x.Parent;
+    x.SubRecipes.forEach(y => {
+      y.RawRate *= x.Multiplier;
+      y.Multiplier = y.RawRate/y.Base;
+    });
+    multiplySummary(x.SubRecipes);
+  });
+}
+
 function generateEfficientSummary(inefficientRate){
+  var copy = inefficientRate.map(deepCopyRecipe, null);
+  var flatArray = flattenRecipeTree(copy);
+  flatArray.sort((item1, item2) => {
+    var complexityCompare = Math.sign(item2.Complexity - item1.Complexity);
+    var tierCompare = Math.sign(item1.Tier - item2.Tier);
+    if (complexityCompare !== 0)
+      return complexityCompare;
+    if (item1.Label < item2.Label)
+      return -1;
+    if (item2.Label < item1.Label)
+      return 1;
+    if (tierCompare !== 0)
+      return tierCompare;
+    return 0;
+  });
+  
+  for (var i=0; i<flatArray.length; i++){
+    attemptCombine(flatArray, i);
+  }
+  
+  multiplySummary(copy);
+  return copy;
 }
 
 function generateSummary(recipeList){
   var ret = {};
   ret.Inefficient = generateInefficientSummary(recipeList);
   ret.Efficient = generateEfficientSummary(ret.Inefficient);
-  multiplyInefficientSummary(ret.Inefficient);
+  multiplySummary(ret.Inefficient);
   return ret;
 }
 
