@@ -58,7 +58,7 @@
   white-space: nowrap;
   position: relative;
   padding-right: 20px;
-  min-width: 250px;
+  width: 300px;
 }
 
 #inefficient-nodetree::after{
