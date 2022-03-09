@@ -245,7 +245,7 @@ function removeRecipe(recipe){
 }
 
 function attemptCombine(flatArray, index){
-  var recipe = flatArray[i];
+  var recipe = flatArray[index];
   var toCombine = flatArray.filter(x => {return x.Label == recipe.Label});
   if (toCombine.length <= 1)
     return;
