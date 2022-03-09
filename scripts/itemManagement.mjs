@@ -185,7 +185,7 @@ function multiplyInefficientSummary(inefficientList){
     x.Rate = x.Base * x.Multiplier;
     x.RawRate *= x.Multiplier;
     x.SubRecipes.forEach(y => {
-      y.Multiplier = Math.ceil((x.Multiplier*y.Rate/y.Base) / 0.5) * 0.5;
+      y.Multiplier = Math.ceil((x.Multiplier*y.RawRate/y.Base) / 0.5) * 0.5;
     });
     multiplyInefficientSummary(x.SubRecipes);
   });
