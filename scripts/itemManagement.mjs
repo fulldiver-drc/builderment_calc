@@ -184,6 +184,7 @@ function generateInefficientSummary(recipeList){
     recipe.Parent = null;
     recipe.Base = item.Base;
     recipe.Building = item.Building;
+    recipe.Complexity = item.Complexity;
     recipe.Label = item.Label;
     recipe.RawRate = recipe.Base * recipe.Multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
@@ -197,6 +198,7 @@ function deepCopyRecipe(recipe){
   obj.Label = recipe.Label;
   obj.RawRate = recipe.RawRate;
   obj.Building = recipe.Building;
+  obj.Complexity = recipe.Complexity;
   obj.Base = recipe.Base;
   obj.Multiplier = recipe.Multiplier;
   obj.SubRecipes = recipe.SubRecipes.map(deepCopyRecipe, obj);
