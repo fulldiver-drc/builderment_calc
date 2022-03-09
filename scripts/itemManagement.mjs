@@ -256,17 +256,22 @@ function attemptCombine(flatArray, index){
   toCombine.forEach(removeRecipe, flatArray);
 }
 
-function multiplySummary(inefficientList){
+function finalizeSummary(inefficientList, isFlat = false){
   if (!inefficientList || inefficientList.length == 0)
     return;
   inefficientList.forEach(x => {
-    x.Rate = x.Base * x.Multiplier;
-    delete x.Parent;
     x.SubRecipes.forEach(y => {
       y.RawRate *= x.Multiplier;
       y.Multiplier = y.RawRate/y.Base;
     });
-    multiplySummary(x.SubRecipes);
+    finalizeSummary(x.SubRecipes, isFlat);
+    
+    x.Multiplier = Math.ceil(x.Multiplier/0.5) * 0.5;
+    delete x.Parent;
+    delete x.Tier;
+    delete x.Complexity
+    if (isFlat)
+      delete x.SubRecipes
   });
 }
 
@@ -291,7 +296,7 @@ function generateEfficientSummary(inefficientRate){
     attemptCombine(flatArray, i);
   }
   
-  multiplySummary(copy);
+  finalizeSummary(copy, true);
   return flatArray;
 }
 
@@ -299,7 +304,7 @@ function generateSummary(recipeList){
   var ret = {};
   ret.Inefficient = generateInefficientSummary(recipeList);
   ret.Efficient = generateEfficientSummary(ret.Inefficient);
-  multiplySummary(ret.Inefficient);
+  finalizeSummary(ret.Inefficient);
   return ret;
 }
 
