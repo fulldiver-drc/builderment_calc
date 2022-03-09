@@ -191,6 +191,7 @@ function generateInefficientSummary(recipeList){
     obj.Multiplier = recipe.Multiplier;
     obj.RawRate = obj.Base * obj.Multiplier;
     obj.SubRecipes = getSubRecipes(obj);
+    return obj;
   });
 }
 
