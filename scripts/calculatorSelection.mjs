@@ -105,7 +105,20 @@ var RecipeCalculator = function(){
   function preview(obj){
     var element = document.createElement('div');
     element.innerHTML = `<h2>${obj.Label}</h2>`;
-    element.innerHTML += `<div style='margin-left: 30px'>Required Rate: ${obj.RawRate.toFixed(2)} / min<br/>Building: ${obj.Building}<br/>Total Required Multiplier: ${Math.ceil(obj.Multiplier / 0.5) * 0.5}</div>`;
+    var details = document.createElement('div');
+    details.setAttribute('style', 'margin-left: 30px;');
+    details.innerHTML = `Required Rate: ${obj.RawRate.toFixed(2)} / min<br/>Building: ${obj.Building}<br/>Total Required Multiplier: ${Math.ceil(obj.Multiplier / 0.5) * 0.5}`;
+    
+    if (obj.SubRecipes && obj.SubRecipes.length > 0){
+      details.innerHTML += 'Ingredients:<br/>';
+      var ingredients = document.createElement('div');
+      ingredients.setAttribute('style', 'margin-left: 20px;');
+      obj.SubRecipes.forEach(x => {
+        ingredients.innerHTML += `-${x.Label}: ${x.RawRate.toFixed(2)} / min<br/>`;
+      });
+      details.appendChild(ingredients);
+    }
+    element.appendChild(details);
     return element;
   }
   
