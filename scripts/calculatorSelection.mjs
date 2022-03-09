@@ -112,7 +112,7 @@ var RecipeCalculator = function(){
     if (obj.SubRecipes && obj.SubRecipes.length > 0){
       details.innerHTML += '<br/>Ingredients:';
       var ingredients = document.createElement('ul');
-      ingredients.setAttribute('style', 'margin-left: 20px;');
+      ingredients.setAttribute('style', 'margin: 0;');
       obj.SubRecipes.forEach(x => {
         ingredients.innerHTML += `<li>${x.Label}: ${x.RawRate.toFixed(2)} / min</li>`;
       });
