@@ -199,6 +199,7 @@ function deepCopyRecipe(recipe){
   obj.RawRate = recipe.RawRate;
   obj.Building = recipe.Building;
   obj.Complexity = recipe.Complexity;
+  obj.Tier = recipe.Tier;
   obj.Base = recipe.Base;
   obj.Multiplier = recipe.Multiplier;
   obj.SubRecipes = recipe.SubRecipes.map(deepCopyRecipe, obj);
