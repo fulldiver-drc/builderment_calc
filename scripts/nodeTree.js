@@ -42,6 +42,9 @@ var NodeTree = function(){
   this.preview = function(){
     var element = event.currentTarget;
     
+    if (!element.closest('.tree-node').hasAttribute('expanded'))
+      node.setAttribute('expanded', '')
+    
     var rootNode = element.closest('.tree-node:not(.tree-node .tree-node)').parentElement;
     rootNode.previewPane.innerHTML = '';
     rootNode.previewPane.appendChild(element.previewNode);
@@ -50,7 +53,7 @@ var NodeTree = function(){
     element.setAttribute('selected', '');
   }
   
-  this.toggle = function(){
+  this.toggle = function(forceExpand = false){
     event.preventDefault();
     var node = event.currentTarget.closest('.tree-node');
     var isExpanded = node.hasAttribute('expanded');
