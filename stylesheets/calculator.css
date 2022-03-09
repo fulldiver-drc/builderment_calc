@@ -120,7 +120,8 @@
 
 .tab-contents{
   flex: 1 1 0;
-  padding-top: 20px
+  padding-top: 20px;
+  overflow: hidden;
 }
 
 .tab-content{
