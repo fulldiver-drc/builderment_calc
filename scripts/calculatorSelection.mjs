@@ -98,7 +98,7 @@ var RecipeCalculator = function(){
   
   function label(obj){
     var element = document.createElement('div');
-    element.innerHTML = `<span>${obj.Label}: ${obj.RawRate.toFixed(2)} / min</span>`;
+    element.innerHTML = `<span>${obj.Label}: ${obj.Building + ' x' + obj.Multiplier} / min</span>`;
     return element;
   }
   
@@ -107,7 +107,7 @@ var RecipeCalculator = function(){
     element.innerHTML = `<h2>${obj.Label}</h2>`;
     var details = document.createElement('div');
     details.setAttribute('style', 'margin-left: 30px;');
-    details.innerHTML = `Required Rate: ${obj.RawRate.toFixed(2)} / min<br/>Building: ${obj.Building}<br/>Total Required Multiplier: ${Math.ceil(obj.Multiplier / 0.5) * 0.5}`;
+    details.innerHTML = `Required Rate: ${obj.RawRate.toFixed(2)} / min<br/>Building: ${obj.Building}<br/>Total Required Multiplier: ${obj.Multiplier}`;
     
     if (obj.SubRecipes && obj.SubRecipes.length > 0){
       details.innerHTML += '<br/>Ingredients:';
