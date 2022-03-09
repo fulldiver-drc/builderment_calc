@@ -183,9 +183,9 @@ function multiplyInefficientSummary(inefficientList){
     return;
   inefficientList.forEach(x => {
     x.Rate = x.Base * x.Multiplier;
-    x.RawRate *= x.Multiplier;
     x.SubRecipes.forEach(y => {
-      y.Multiplier = Math.ceil((x.Multiplier*y.RawRate/y.Base) / 0.5) * 0.5;
+      y.RawRate *= x.Multiplier;
+      y.Multiplier = Math.ceil((y.RawRate/y.Base) / 0.5) * 0.5;
     });
     multiplyInefficientSummary(x.SubRecipes);
   });
@@ -197,7 +197,7 @@ function generateInefficientSummary(recipeList){
     recipe.Base = item.Base;
     recipe.Building = item.Building;
     recipe.Label = item.Label;
-    recipe.RawRate = recipe.Base;
+    recipe.RawRate = recipe.Base * recipe.Multiplier;
     recipe.SubRecipes = getSubRecipes(recipe);
   });
   return recipeList;
