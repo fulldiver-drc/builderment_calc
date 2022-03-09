@@ -114,6 +114,7 @@ var RecipeCalculator = function(){
       return;
     var summary = generateSummary(selectedItems);
     inefficientNodeTree.innerHTML = '';
+    inefficientPreview.innerHTML = '';
     nodeTree.createNode(summary.Inefficient, inefficientNodeTree, 'SubRecipes', label, preview, inefficientPreview);
     step2.removeAttribute('disabled');
     console.log(summary)
