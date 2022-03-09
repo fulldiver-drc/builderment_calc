@@ -236,15 +236,14 @@ function removeRecipe(recipe){
   var flatArray = this;
   var ind = flatArray.indexOf(recipe);
   this.splice(ind, 1);
-  if (recipe.Parent !== null){
+  /*if (recipe.Parent !== null){
     ind = recipe.Parent.SubRecipes.indexOf(recipe);
     recipe.Parent.SubRecipes.splice(ind, 1);
-    delete recipe.Parent;
   }
   if (recipe.SubRecipes && recipe.SubRecipes.length > 0){
     recipe.SubRecipes.forEach(removeRecipe, flatArray);
     delete recipe.SubRecipes;
-  }
+  }*/
 }
 
 function attemptCombine(flatArray, index){
