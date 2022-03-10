@@ -98,7 +98,7 @@ var RecipeCalculator = function(){
   
   function label(obj){
     var element = document.createElement('div');
-    element.innerHTML = `<span>${obj.Label}: (${obj.Building + ' x' + obj.Multiplier})</span>`;
+    element.innerHTML = `<span>${obj.Label} (${obj.Building + ' x' + obj.Multiplier})</span>`;
     return element;
   }
   
