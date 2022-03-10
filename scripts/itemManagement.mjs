@@ -175,8 +175,8 @@ function sortByComplexity(item1, item2){
 }
 
 function sortByBuilding(item1, item2){
-  var comp = sortByComplexity(item1 - item2)
-  if (comp !== 0)
+  var comp = sortByComplexity(item1, item2)
+  if (comp)
     return comp;
   if (item1.Building < item2.Building)
     return -1;
@@ -305,7 +305,7 @@ function finalizeSummary(inefficientList, isFlat = false){
   });
 }
 
-function complexitySort(item1, item2){
+function preSort(item1, item2){
   var complexityCompare = sortByComplexity(item2, item1);
   if (complexityCompare)
     return complexityCompare;
@@ -318,16 +318,13 @@ function complexitySort(item1, item2){
 function generateEfficientSummary(inefficientRate){
   var copy = inefficientRate.map(deepCopyRecipe, null);
   var flatArray = flattenRecipeTree(copy);
-  flatArray.sort(complexitySort);
+  flatArray.sort(preSort);
   
   for (var i=0; i<flatArray.length; i++){
     attemptCombine(flatArray, i);
   }
   
   flatArray.sort((item1, item2) => {
-    var complexityCompare = sortByComplexity(item1, item2);
-    if (complexityCompare)
-      return complexityCompare;
     var buildingCompare = sortByBuilding(item1, item2);
     if (buildingCompare)
       return buildingCompare;
