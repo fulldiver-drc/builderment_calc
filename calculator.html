@@ -44,16 +44,31 @@
         <div class='tabs'>
           <div class='tab-headers'>
             <div class='tab-header' tab-index=0 active onclick='tabs.setTab(this)'>Production Tree (Simpler Belts)</div>
-            <div class='tab-header' tab-index=1 onclick='tabs.setTab(this)'>Production Summary (Fewer Buildings)</div>
+            <div class='tab-header' tab-index=1 onclick='tabs.setTab(this)'>Production List (Fewer Buildings)</div>
           </div>
           <div class='tab-contents'>
             <div class='tab-content' tab-index=0 active>
-              <div id='inefficient-wrapper'>
+              <div id='inefficient-wrapper' class='tab-content-wrapper'>
                 <div id='inefficient-nodetree'></div>
                 <div id='inefficient-preview'></div>
               </div>
             </div>
-            <div class='tab-content' tab-index=1></div>
+            <div class='tab-content' tab-index=1>
+              <div id='efficient-wrapper' class='tab-content-wrapper'>
+                <table id='efficient-table'>
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Rate</th>
+                      <th>Building</th>
+                      <th>Multiplier</th>
+                    </tr>
+                  </thead>
+                </table>
+                <div id='efficient-preview'>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
