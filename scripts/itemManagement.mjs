@@ -264,7 +264,7 @@ function finalizeSummary(inefficientList, isFlat = false){
     });
     finalizeSummary(x.SubRecipes, isFlat);
     
-    x.Multiplier = Math.ceil(x.Multiplier/0.5) * 0.5;
+    x.Multiplier = Math.max(Math.ceil(x.Multiplier/0.5) * 0.5, 1);
     delete x.Parent;
     delete x.Tier;
     delete x.Complexity
