@@ -137,10 +137,9 @@ const ingredients =
   {Id: 90, TargetItem: 48, SourceItem: 5, Rate: (200/3)}];
 
 const sortSettings = {
-  id: 0,
-  label: 1,
-  base: 2,
-  building: 3
+  label: 0,
+  base: 1,
+  building: 2
 }
 
 const level = {
@@ -153,6 +152,37 @@ const level = {
 
 function getItemDetails(itemId){
   return items.find(x => {return x.Id == itemId});
+}
+
+function sortByLabel(item1, item2){
+  if (item1.Label < item2.Label)
+    return -1;
+  if (item2.Label < item1.Label)
+    return 1;
+  return 0;
+}
+
+function sortByBase(item1, item2){
+  return (item1.Base - item2.Base);
+}
+
+function sortByTier(item1, item2){
+  return (item1.Tier - item2.Tier);
+}
+
+function sortByComplexity(item1, item2){
+  return item1.Complexity - item2.Complexity;
+}
+
+function sortByBuilding(item1, item2){
+  var comp = sortByComplexity(item1 - item2)
+  if (comp !== 0)
+    return comp;
+  if (item1.Building < item2.Building)
+    return -1;
+  if (item2.Building < item1.Building)
+    return 1
+  return 0;
 }
 
 function getSubRecipes(recipe, tier = 0){
@@ -275,26 +305,34 @@ function finalizeSummary(inefficientList, isFlat = false){
   });
 }
 
+function complexitySort(item1, item2){
+  var complexityCompare = sortByComplexity(item2, item1);
+  if (complexityCompare)
+    return complexityCompare;
+  var labelCompare = sortByLabel(item1, item2);
+  if (labelCompare)
+    return labelCompare;
+  return sortByTier(item1, item2);
+}
+
 function generateEfficientSummary(inefficientRate){
   var copy = inefficientRate.map(deepCopyRecipe, null);
   var flatArray = flattenRecipeTree(copy);
-  flatArray.sort((item1, item2) => {
-    var complexityCompare = Math.sign(item2.Complexity - item1.Complexity);
-    var tierCompare = Math.sign(item1.Tier - item2.Tier);
-    if (complexityCompare !== 0)
-      return complexityCompare;
-    if (item1.Label < item2.Label)
-      return -1;
-    if (item2.Label < item1.Label)
-      return 1;
-    if (tierCompare !== 0)
-      return tierCompare;
-    return 0;
-  });
+  flatArray.sort(complexitySort);
   
   for (var i=0; i<flatArray.length; i++){
     attemptCombine(flatArray, i);
   }
+  
+  flatArray.sort((item1, item2) => {
+    var complexityCompare = sortByComplexity(item1, item2);
+    if (complexityCompare)
+      return complexityCompare;
+    var buildingCompare = sortByBuilding(item1, item2);
+    if (buildingCompare)
+      return buildingCompare;
+    return sortByLabel(item1, item2);
+  });
   
   finalizeSummary(copy, true);
   return flatArray;
@@ -312,47 +350,6 @@ function filterItems(item){
   return this.test(item.Label);
 }
 
-function sortItemsById(item1, item2){
-  if (item1.Id < item2.Id)
-    return -1;
-  if (item2.Id < item1.Id)
-    return 1;
-  return 0;
-}
-
-function sortItemsByLabel(item1, item2){
-  if (item1.Label < item2.Label)
-    return -1;
-  if (item2.Label < item1.Label)
-    return 1;
-  return 0;
-}
-
-function sortItemsByBase(item1, item2){
-  if (item1.Base < item2.Base)
-    return -1;
-  if (item2.Base < item1.Base)
-    return 1;
-  return 0;
-}
-
-function sortItemsByBuilding(item1, item2){
-  var building1 = '';
-  var building2 = '';
-  for (var i=0; i<buildings.length && (building1 == '' || building2 ==''); i++){
-    if (item1.BuildingId == buildings[i].Id)
-      building1 = buildings[i].Label;
-    if (item2.BuildingId == buildings[i].Id)
-      building2 = buildings[i].Label;
-  }
-  
-  if (buildings1 < buildings2)
-    return -1;
-  if (buildings2 < buildings1)
-    return 1;
-  return 0;
-}
-
 function getItemList(searchKey, sortSetting = 0){
   var list = [...items];
   if (searchKey !== null && searchKey !== ''){
@@ -361,17 +358,14 @@ function getItemList(searchKey, sortSetting = 0){
   }
   
   switch (sortSetting){
-    case (sortSettings.id):
-      list.sort(sortItemsById);
-      break;
     case (sortSettings.label):
-      list.sort(sortItemsByLabel);
+      list.sort(sortByLabel);
       break;
     case (sortSettings.building):
-      list.sort(sortItemsByBuilding);
+      list.sort(sortByBuilding);
       break;
     case (sortSettings.base):
-      list.sort(sortItemsByBase);
+      list.sort(sortByBase);
       break;
   }
   
