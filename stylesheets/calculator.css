@@ -20,7 +20,7 @@
 }
 
 #step2{
-  max-height: height: max(calc(100vh - 120px), 600px);
+  max-height: max(calc(100vh - 120px), 600px);
   height: max(calc(100vh - 120px), 600px);
   display: flex;
   flex-direction: column;
